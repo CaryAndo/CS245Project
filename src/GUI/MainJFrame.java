@@ -38,6 +38,7 @@ public class MainJFrame extends JFrame {
                 startMainMenu();
             }
         });
+        timer.setRepeats(false);
 
         timer.start();
     }
@@ -81,14 +82,75 @@ public class MainJFrame extends JFrame {
 
     private void startMainMenu() {
         System.out.println("Starting the main menu");
-        BorderLayout menuLayout = new BorderLayout();
 
         /**
          * Menu Panel
          * */
-        mMenuPanel = new JPanel(menuLayout);
-        mMenuPanel.setBackground(Color.red);
+        mMenuPanel = new JPanel();
+        mMenuPanel.setBackground(Color.black);
         mMenuPanel.setPreferredSize(new Dimension(600, 400));
+
+        /**
+         * Main Logo picture
+         * */
+        ImagePanel image = new ImagePanel();
+        image.setPreferredSize(new Dimension(200, 100));
+        image.setStretch(true);
+        ImagePanel jLabel1 = image;
+
+        /**
+         * Start Button
+         * */
+        JButton startButton = new JButton();
+        startButton.setText("Start");
+
+        /**
+         * "High Scores" Button
+         * */
+        JButton highScoresButton = new JButton();
+        highScoresButton.setText("High Scores");
+
+        /**
+         * Credits Button
+         * */
+        JButton creditsButton = new JButton();
+        creditsButton.setText("Credits");
+
+        /**
+         * Layout for the Panel
+         * TODO: Rework this
+         * */
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        /*layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(jLabel1)
+                                .addContainerGap(249, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addContainerGap())
+        );*/
+
+        GroupLayout menuLayout = new GroupLayout(mMenuPanel);
 
         add(mMenuPanel, BorderLayout.CENTER);
         pack();
