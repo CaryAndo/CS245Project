@@ -42,6 +42,9 @@ public class MainMenuPanel extends JPanel {
         this.mCallbacks = callbacks;
     }
 
+    /**
+     * Initialize the UI
+     * */
     private void initUI() {
         setBackground(Color.black);
         setPreferredSize(new Dimension(600, 400));
@@ -64,7 +67,7 @@ public class MainMenuPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("START_GAME")) {
-                    mCallbacks.startNewGame();
+                    mCallbacks.startNewHangmanGame();
                 }
             }
         });

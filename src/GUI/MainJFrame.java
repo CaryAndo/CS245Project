@@ -13,9 +13,6 @@ import java.awt.event.ActionListener;
 public class MainJFrame extends JFrame implements FrameCallbacks {
 
     private JPanel mCurrentScreenPanel; // A reference to the current JPanel that is being displayed in the window
-    private JPanel mSplashPanel;
-    private JPanel mMenuPanel;
-    private JPanel mGamePanel;
 
     public MainJFrame() {
         super();
@@ -33,18 +30,15 @@ public class MainJFrame extends JFrame implements FrameCallbacks {
         startSplashScreen();
 
         setLocationRelativeTo(null); // Center the Window
-        setVisible(true); // Show the Window
 
         Timer timer = new Timer(3000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                remove(mSplashPanel);
                 startMainMenu();
             }
         });
         timer.setRepeats(false);
-
-        timer.start();
+        timer.start(); // gogogogogo
     }
 
     @Override
@@ -55,9 +49,10 @@ public class MainJFrame extends JFrame implements FrameCallbacks {
             remove(mCurrentScreenPanel);
         }
 
-        mSplashPanel = new SplashScreenPanel(splashLayout);
-        add(mSplashPanel, BorderLayout.CENTER); // Add JPanel to JFrame
+        JPanel splashScreenPanel = new SplashScreenPanel(splashLayout);
+        mCurrentScreenPanel = splashScreenPanel;
 
+        add(splashScreenPanel, BorderLayout.CENTER); // Add JPanel to JFrame
         pack();
     }
 
@@ -69,25 +64,25 @@ public class MainJFrame extends JFrame implements FrameCallbacks {
             remove(mCurrentScreenPanel);
         }
 
-        mMenuPanel = new MainMenuPanel(this);
-        mCurrentScreenPanel = mMenuPanel;
+        JPanel mainMenuPanel = new MainMenuPanel(this);
+        mCurrentScreenPanel = mainMenuPanel;
 
-        add(mMenuPanel, BorderLayout.CENTER);
+        add(mainMenuPanel, BorderLayout.CENTER);
         pack();
     }
 
     @Override
-    public void startNewGame() {
+    public void startNewHangmanGame() {
         System.out.println("Starting a new game!");
 
         if (mCurrentScreenPanel != null) {
             remove(mCurrentScreenPanel);
         }
 
-        mGamePanel = new HangmanGamePanel(this);
-        mCurrentScreenPanel = mGamePanel;
+        JPanel hangmanGamePanel = new HangmanGamePanel(this);
+        mCurrentScreenPanel = hangmanGamePanel;
 
-        add(mGamePanel, BorderLayout.CENTER);
+        add(hangmanGamePanel, BorderLayout.CENTER);
         pack();
     }
 }

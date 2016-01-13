@@ -24,6 +24,9 @@ public class SplashScreenPanel extends JPanel {
         initUI();
     }
 
+    /**
+     * Initialize the UI
+     * */
     private void initUI() {
         setBackground(Color.black);
         setPreferredSize(new Dimension(600, 400));
@@ -51,5 +54,4 @@ public class SplashScreenPanel extends JPanel {
         add(splashTitleLabel, BorderLayout.NORTH); // Add JLabel to Panel
         add(splashSubtextLabel, BorderLayout.SOUTH); // Add JLabel to Panel
     }
-
 }

@@ -40,6 +40,9 @@ public class HangmanGamePanel extends JPanel {
         this.mCallbacks = callbacks;
     }
 
+    /**
+     * Initialize the UI
+     * */
     private void initUI() {
         setBackground(Color.white);
         setPreferredSize(new Dimension(600, 400));
@@ -111,5 +114,4 @@ public class HangmanGamePanel extends JPanel {
                                 .addContainerGap())
         );
     }
-
 }

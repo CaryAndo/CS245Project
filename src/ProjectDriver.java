@@ -1,8 +1,9 @@
 import GUI.MainJFrame;
 
-public class Main {
+public class ProjectDriver {
 
     public static void main(String[] args) {
         MainJFrame mainJFrame = new MainJFrame();
+        mainJFrame.setVisible(true); // Show the Window
     }
 }
