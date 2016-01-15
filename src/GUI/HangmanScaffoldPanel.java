@@ -8,18 +8,6 @@ import java.awt.*;
  */
 public class HangmanScaffoldPanel extends JPanel {
 
-    private static final int LINE_THICKNESS = 5;
-    private static final int SCAFFOLD_TOP_MARGIN = 10;
-    private static final int MAN_WIDTH = 200;
-    private static final int TIDBIT_HEIGHT = 10;
-    private static final int MAN_HEAD_DIAMETER = 30;
-    private static final int MAN_BODY_HEIGHT = 50;
-    private static final int SHOULDER_SPACE = 10;
-    private static final int MAN_ARM_WIDTH = 30;
-    private static final int MAN_ARM_HEIGHT = 15;
-    private static final int MAN_LEG_WIDTH = 15;
-    private static final int MAN_LEG_HEIGHT = 15;
-
     private boolean mDrawHead = false;
     private boolean mDrawBody = false;
     private boolean mDrawLeftArm = false;
@@ -27,54 +15,71 @@ public class HangmanScaffoldPanel extends JPanel {
     private boolean mDrawRightLeg = false;
     private boolean mDrawLeftLeg = false;
 
-    public boolean ismDrawRightLeg() {
+    public boolean isDrawingRightLeg() {
         return mDrawRightLeg;
     }
 
-    public void setmDrawRightLeg(boolean mDrawRightLeg) {
+    public void setDrawRightLeg(boolean mDrawRightLeg) {
         this.mDrawRightLeg = mDrawRightLeg;
     }
 
-    public boolean ismDrawHead() {
+    public boolean isDrawingHead() {
         return mDrawHead;
     }
 
-    public void setmDrawHead(boolean mDrawHead) {
+    public void setDrawHead(boolean mDrawHead) {
         this.mDrawHead = mDrawHead;
     }
 
-    public boolean ismDrawBody() {
+    public boolean isDrawingBody() {
         return mDrawBody;
     }
 
-    public void setmDrawBody(boolean mDrawBody) {
+    public void setDrawBody(boolean mDrawBody) {
         this.mDrawBody = mDrawBody;
     }
 
-    public boolean ismDrawLeftArm() {
+    public boolean isDrawingLeftArm() {
         return mDrawLeftArm;
     }
 
-    public void setmDrawLeftArm(boolean mDrawLeftArm) {
+    public void setDrawLeftArm(boolean mDrawLeftArm) {
         this.mDrawLeftArm = mDrawLeftArm;
     }
 
-    public boolean ismDrawRightArm() {
+    public boolean isDrawingRightArm() {
         return mDrawRightArm;
     }
 
-    public void setmDrawRightArm(boolean mDrawRightArm) {
+    public void setDrawRightArm(boolean mDrawRightArm) {
         this.mDrawRightArm = mDrawRightArm;
     }
 
-    public boolean ismDrawLeftLeg() {
+    public boolean isDrawingLeftLeg() {
         return mDrawLeftLeg;
     }
 
-    public void setmDrawLeftLeg(boolean mDrawLeftLeg) {
+    public void setDrawLeftLeg(boolean mDrawLeftLeg) {
         this.mDrawLeftLeg = mDrawLeftLeg;
     }
 
+    public void addNextBodyPart() {
+        if (!isDrawingHead()) {
+            setDrawHead(true);
+        } else if (!isDrawingBody()) {
+            setDrawBody(true);
+        } else if (!isDrawingRightArm()) {
+            setDrawRightArm(true);
+        } else if (!isDrawingLeftArm()) {
+            setDrawLeftArm(true);
+        } else if (!isDrawingRightLeg()) {
+            setDrawRightLeg(true);
+        } else if (!isDrawingLeftLeg()) {
+            setDrawLeftLeg(true);
+        }
+
+        repaint();
+    }
 
     public HangmanScaffoldPanel() {
 
@@ -85,6 +90,21 @@ public class HangmanScaffoldPanel extends JPanel {
         super.paintComponent(g);
         g.setColor(Color.BLACK);
 
+        /**
+         * Drawing constants
+         * */
+        final int LINE_THICKNESS = 5;
+        final int SCAFFOLD_TOP_MARGIN = 10;
+        final int MAN_WIDTH = 200;
+        final int TIDBIT_HEIGHT = 10;
+        final int MAN_HEAD_DIAMETER = 30;
+        final int MAN_BODY_HEIGHT = 50;
+        final int SHOULDER_SPACE = 10;
+        final int MAN_ARM_WIDTH = 30;
+        final int MAN_ARM_HEIGHT = 15;
+        final int MAN_LEG_WIDTH = 15;
+        final int MAN_LEG_HEIGHT = 15;
+
         int poleXPosition = getWidth()/3 - LINE_THICKNESS;
         int manXPosition = getWidth()/3 - LINE_THICKNESS/2 + (MAN_WIDTH/2) - MAN_HEAD_DIAMETER/2;
 
@@ -92,6 +112,9 @@ public class HangmanScaffoldPanel extends JPanel {
         int manYBottomOfHead = manYTopOfHead + MAN_HEAD_DIAMETER;
         int manYBottomofTorso = manYTopOfHead + MAN_HEAD_DIAMETER + MAN_BODY_HEIGHT;
 
+        /**
+         * Start actually drawing
+         * */
         g.fillRect(0, getHeight() - LINE_THICKNESS, getWidth(), LINE_THICKNESS); // Draw the bottom of the scaffold
         g.fillRect(poleXPosition, SCAFFOLD_TOP_MARGIN, LINE_THICKNESS, getHeight() - LINE_THICKNESS); // Draw the scaffold poll
         g.fillRect(poleXPosition, SCAFFOLD_TOP_MARGIN, MAN_WIDTH/2, LINE_THICKNESS); // Draw the scaffold overhang
@@ -99,41 +122,59 @@ public class HangmanScaffoldPanel extends JPanel {
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
-        g2.drawOval(
-                getWidth()/3 - LINE_THICKNESS/2 + (MAN_WIDTH/2) - MAN_HEAD_DIAMETER/2,
-                SCAFFOLD_TOP_MARGIN + LINE_THICKNESS/2 + TIDBIT_HEIGHT,
-                MAN_HEAD_DIAMETER,
-                MAN_HEAD_DIAMETER
-        ); // Draw the man's head
-        g2.drawLine(
-                manXPosition + MAN_HEAD_DIAMETER/2,
-                manYTopOfHead + MAN_HEAD_DIAMETER,
-                manXPosition + MAN_HEAD_DIAMETER/2,
-                manYBottomofTorso
-        ); // Draw the man's body
-        g2.drawLine(
-                manXPosition + MAN_HEAD_DIAMETER/2,
-                manYBottomOfHead + SHOULDER_SPACE,
-                manXPosition + (MAN_HEAD_DIAMETER/2 + 30),
-                manYBottomOfHead + SHOULDER_SPACE - MAN_ARM_HEIGHT
-        ); // Draw the man's right arm
-        g2.drawLine(
-                manXPosition + MAN_HEAD_DIAMETER/2,
-                manYBottomOfHead + SHOULDER_SPACE,
-                manXPosition - MAN_HEAD_DIAMETER/2,
-                manYBottomOfHead + SHOULDER_SPACE - MAN_ARM_HEIGHT
-        ); // Draw the man's left arm
-        g2.drawLine(
-                manXPosition + MAN_HEAD_DIAMETER/2,
-                manYBottomofTorso,
-                manXPosition + MAN_HEAD_DIAMETER/2 + MAN_LEG_WIDTH,
-                manYBottomofTorso + MAN_LEG_HEIGHT
-        ); // Draw the man's right leg
-        g2.drawLine(
-                manXPosition + MAN_HEAD_DIAMETER/2,
-                manYBottomofTorso,
-                manXPosition + MAN_HEAD_DIAMETER/2 - MAN_LEG_WIDTH,
-                manYBottomofTorso + MAN_LEG_HEIGHT
-        ); // Draw the man's left leg
+
+        if (mDrawHead) {
+            g2.drawOval(
+                    getWidth() / 3 - LINE_THICKNESS / 2 + (MAN_WIDTH / 2) - MAN_HEAD_DIAMETER / 2,
+                    SCAFFOLD_TOP_MARGIN + LINE_THICKNESS / 2 + TIDBIT_HEIGHT,
+                    MAN_HEAD_DIAMETER,
+                    MAN_HEAD_DIAMETER
+            ); // Draw the man's head
+        }
+
+        if (mDrawBody) {
+            g2.drawLine(
+                    manXPosition + MAN_HEAD_DIAMETER / 2,
+                    manYTopOfHead + MAN_HEAD_DIAMETER,
+                    manXPosition + MAN_HEAD_DIAMETER / 2,
+                    manYBottomofTorso
+            ); // Draw the man's body
+        }
+
+        if (mDrawRightArm) {
+            g2.drawLine(
+                    manXPosition + MAN_HEAD_DIAMETER / 2,
+                    manYBottomOfHead + SHOULDER_SPACE,
+                    manXPosition + (MAN_HEAD_DIAMETER / 2 + 30),
+                    manYBottomOfHead + SHOULDER_SPACE - MAN_ARM_HEIGHT
+            ); // Draw the man's right arm
+        }
+
+        if (mDrawLeftArm) {
+            g2.drawLine(
+                    manXPosition + MAN_HEAD_DIAMETER / 2,
+                    manYBottomOfHead + SHOULDER_SPACE,
+                    manXPosition - MAN_HEAD_DIAMETER / 2,
+                    manYBottomOfHead + SHOULDER_SPACE - MAN_ARM_HEIGHT
+            ); // Draw the man's left arm
+        }
+
+        if (mDrawRightLeg) {
+            g2.drawLine(
+                    manXPosition + MAN_HEAD_DIAMETER / 2,
+                    manYBottomofTorso,
+                    manXPosition + MAN_HEAD_DIAMETER / 2 + MAN_LEG_WIDTH,
+                    manYBottomofTorso + MAN_LEG_HEIGHT
+            ); // Draw the man's right leg
+        }
+        
+        if (mDrawLeftLeg) {
+            g2.drawLine(
+                    manXPosition + MAN_HEAD_DIAMETER / 2,
+                    manYBottomofTorso,
+                    manXPosition + MAN_HEAD_DIAMETER / 2 - MAN_LEG_WIDTH,
+                    manYBottomofTorso + MAN_LEG_HEIGHT
+            ); // Draw the man's left leg
+        }
     }
 }

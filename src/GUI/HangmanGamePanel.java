@@ -4,6 +4,8 @@ import callbacks.FrameCallbacks;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by cary on 1/13/16.
@@ -50,14 +52,14 @@ public class HangmanGamePanel extends JPanel {
         GridLayout lettersLayout = new GridLayout(2, 13);
 
         // TODO: rename these panels
-        JPanel jPanel1 = new HangmanScaffoldPanel();
+        final HangmanScaffoldPanel hangmanScaffoldPanel = new HangmanScaffoldPanel();
         JPanel jPanel2 = new JPanel();
         JPanel jPanel3 = new JPanel();
 
-        jPanel1.setBackground(new Color(255, 255, 255));
+        hangmanScaffoldPanel.setBackground(new Color(255, 255, 255));
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
+        GroupLayout jPanel1Layout = new GroupLayout(hangmanScaffoldPanel);
+        hangmanScaffoldPanel.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGap(0, 415, Short.MAX_VALUE)
@@ -86,6 +88,12 @@ public class HangmanGamePanel extends JPanel {
         for (int i = 0; i < 26; i++) {
             JButton tempButton = new JButton(Character.toString((char) ('A'+i)));
             tempButton.setMinimumSize(new Dimension(20, 20));
+            tempButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    hangmanScaffoldPanel.addNextBodyPart();
+                }
+            });
             jPanel3.add(tempButton);
         }
 
@@ -96,7 +104,7 @@ public class HangmanGamePanel extends JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(hangmanScaffoldPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jPanel3, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
@@ -105,7 +113,7 @@ public class HangmanGamePanel extends JPanel {
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(hangmanScaffoldPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
