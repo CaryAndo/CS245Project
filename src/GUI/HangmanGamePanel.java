@@ -1,5 +1,7 @@
 package GUI;
 
+import GUI.hangman.HangmanScaffoldPanel;
+import GUI.hangman.HangmanWordPanel;
 import callbacks.FrameCallbacks;
 
 import javax.swing.*;
@@ -53,7 +55,7 @@ public class HangmanGamePanel extends JPanel {
 
         // TODO: rename these panels
         final HangmanScaffoldPanel hangmanScaffoldPanel = new HangmanScaffoldPanel();
-        JPanel jPanel2 = new JPanel();
+        HangmanWordPanel jPanel2 = new HangmanWordPanel();
         JPanel jPanel3 = new JPanel();
 
         hangmanScaffoldPanel.setBackground(new Color(255, 255, 255));
@@ -69,7 +71,7 @@ public class HangmanGamePanel extends JPanel {
                         .addGap(0, 164, Short.MAX_VALUE)
         );
 
-        jPanel2.setBackground(new Color(150, 0, 0));
+        jPanel2.setBackground(new Color(255, 255, 255));
 
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -82,11 +84,11 @@ public class HangmanGamePanel extends JPanel {
                         .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new Color(0, 0, 150));
+        jPanel3.setBackground(new Color(255, 255, 255));
 
         jPanel3.setLayout(lettersLayout);
         for (int i = 0; i < 26; i++) {
-            JButton tempButton = new JButton(Character.toString((char) ('A'+i)));
+            JButton tempButton = new JButton(Character.toString((char) ('A' + i)));
             tempButton.setMinimumSize(new Dimension(20, 20));
             tempButton.addActionListener(new ActionListener() {
                 @Override

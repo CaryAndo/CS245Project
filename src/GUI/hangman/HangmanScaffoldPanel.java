@@ -1,4 +1,4 @@
-package GUI;
+package GUI.hangman;
 
 import javax.swing.*;
 import java.awt.*;
