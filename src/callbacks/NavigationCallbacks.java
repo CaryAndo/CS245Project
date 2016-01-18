@@ -6,11 +6,13 @@ package callbacks;
  *
  * Created by cary on 1/13/16.
  */
-public interface FrameCallbacks {
+public interface NavigationCallbacks {
 
     void startMainMenu();
 
     void startSplashScreen();
 
     void startNewHangmanGame();
+
+    void startFinishScreen();
 }

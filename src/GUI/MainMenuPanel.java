@@ -1,6 +1,6 @@
 package GUI;
 
-import callbacks.FrameCallbacks;
+import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class MainMenuPanel extends JPanel {
 
-    private FrameCallbacks mCallbacks;
+    private NavigationCallbacks mCallbacks;
 
     public MainMenuPanel() {
         super();
@@ -26,19 +26,19 @@ public class MainMenuPanel extends JPanel {
         initUI();
     }
 
-    public MainMenuPanel(FrameCallbacks callbacks) {
+    public MainMenuPanel(NavigationCallbacks callbacks) {
         this();
 
         this.mCallbacks = callbacks;
     }
 
-    public MainMenuPanel(LayoutManager layout, FrameCallbacks callbacks) {
+    public MainMenuPanel(LayoutManager layout, NavigationCallbacks callbacks) {
         this(layout);
 
         this.mCallbacks = callbacks;
     }
 
-    public void setCallbacks(FrameCallbacks callbacks) {
+    public void setCallbacks(NavigationCallbacks callbacks) {
         this.mCallbacks = callbacks;
     }
 

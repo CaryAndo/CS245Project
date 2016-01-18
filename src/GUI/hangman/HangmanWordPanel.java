@@ -10,7 +10,7 @@ public class HangmanWordPanel extends JPanel {
 
     private String mWord = "";
     private int mWordLength = 0;
-    private char[] letters = "".toCharArray();
+    private char[] mLetters = "".toCharArray();
 
     public HangmanWordPanel() {
 
@@ -18,7 +18,7 @@ public class HangmanWordPanel extends JPanel {
 
     public void setWordLength(int length) {
         mWordLength = length;
-        letters = new char[mWordLength];
+        mLetters = new char[mWordLength];
     }
 
     public int getWordLength() {
@@ -26,15 +26,20 @@ public class HangmanWordPanel extends JPanel {
     }
 
     public char[] getLetters() {
-        return letters;
+        return mLetters;
+    }
+
+    public void setLetters(char[] letters) {
+        mLetters = letters;
     }
 
     public void addLetter(int i, char c) throws Exception {
-        if (i > letters.length) {
+        if (i > mLetters.length) {
             throw new Exception("You suck");
         } else {
-            letters[i] = c;
+            mLetters[i] = c;
         }
+        repaint();
     }
 
     @Override
@@ -44,16 +49,16 @@ public class HangmanWordPanel extends JPanel {
         final int LETTER_WIDTH = 40;
         final int LINE_THICKNESS = 5;
         final int LETTER_MARGIN = 2;
-        final int TOTAL_CHARACTERS_WIDTH = (LETTER_MARGIN * 2 * letters.length) + (LETTER_WIDTH * letters.length);
+        final int TOTAL_CHARACTERS_WIDTH = (LETTER_MARGIN * 2 * mLetters.length) + (LETTER_WIDTH * mLetters.length);
         final int CENTERING_MARGIN = (getWidth() - TOTAL_CHARACTERS_WIDTH)/2;
 
         Graphics2D g2 = (Graphics2D) g;
         Font font = new Font("Comic Sans MS", Font.BOLD, 18);
         g2.setFont(font);
         g.setColor(Color.BLACK);
-        for (int i = 0; i < letters.length; i++) {
+        for (int i = 0; i < mLetters.length; i++) {
             g2.drawString(
-                    Character.toString(letters[i]).toUpperCase(),
+                    Character.toString(mLetters[i]).toUpperCase(),
                     (LETTER_MARGIN * 2 * i) + (LETTER_WIDTH * i) + CENTERING_MARGIN + LETTER_WIDTH/2 - font.getSize()/2,
                     getHeight() - LINE_THICKNESS - 12
             );

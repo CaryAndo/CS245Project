@@ -175,6 +175,9 @@ public class HangmanScaffoldPanel extends JPanel {
                     manXPosition + MAN_HEAD_DIAMETER / 2 - MAN_LEG_WIDTH,
                     manYBottomofTorso + MAN_LEG_HEIGHT
             ); // Draw the man's left leg
+
+            g2.setColor(Color.RED);
+            g2.drawString("WASTED", manXPosition, manYBottomofTorso + MAN_LEG_HEIGHT*2);
         }
     }
 }

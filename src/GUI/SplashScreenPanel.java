@@ -1,6 +1,6 @@
 package GUI;
 
-import callbacks.FrameCallbacks;
+import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class SplashScreenPanel extends JPanel {
 
-    FrameCallbacks mCallbacks;
+    NavigationCallbacks mCallbacks;
 
     public SplashScreenPanel() {
         super();

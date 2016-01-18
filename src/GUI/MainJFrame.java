@@ -1,6 +1,6 @@
 package GUI;
 
-import callbacks.FrameCallbacks;
+import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by cary on 1/8/16.
  */
-public class MainJFrame extends JFrame implements FrameCallbacks {
+public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     private JPanel mCurrentScreenPanel; // A reference to the current JPanel that is being displayed in the window
 
@@ -84,5 +84,10 @@ public class MainJFrame extends JFrame implements FrameCallbacks {
 
         add(hangmanGamePanel, BorderLayout.CENTER);
         pack();
+    }
+
+    @Override
+    public void startFinishScreen() {
+        // TODO
     }
 }
