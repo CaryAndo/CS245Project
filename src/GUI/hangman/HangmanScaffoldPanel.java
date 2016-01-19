@@ -13,6 +13,8 @@ import java.util.Calendar;
  */
 public class HangmanScaffoldPanel extends JPanel {
 
+    boolean aoeu = false;
+
     private boolean mDrawHead = false;
     private boolean mDrawBody = false;
     private boolean mDrawLeftArm = false;
@@ -105,6 +107,11 @@ public class HangmanScaffoldPanel extends JPanel {
         super.paintComponent(g);
         g.setColor(Color.BLACK);
 
+        if (!aoeu) {
+            System.out.println(g.getFont());
+            aoeu = true;
+        }
+
         /**
          * Drawing constants
          * */
@@ -192,9 +199,13 @@ public class HangmanScaffoldPanel extends JPanel {
             ); // Draw the man's left leg
 
             g2.setColor(Color.RED);
-            g2.drawString("WASTED", manXPosition, manYBottomofTorso + MAN_LEG_HEIGHT*2);
+            //g2.drawString("WASTED", manXPosition, manYBottomofTorso + MAN_LEG_HEIGHT*2);
+            g2.setFont(new Font("Times New Roman", Font.BOLD, 60));
+            g2.drawString("WASTED", 25, manYBottomofTorso);
         }
 
+        g2.setFont(UIManager.getDefaults().getFont("TabbedPane.font")); // Set the font back to default
+        g2.setColor(Color.BLACK);
         g2.drawString(currentDateString, getWidth() - 150, 20);
     }
 }
