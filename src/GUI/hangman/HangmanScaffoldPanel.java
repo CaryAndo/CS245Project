@@ -13,8 +13,6 @@ import java.util.Calendar;
  */
 public class HangmanScaffoldPanel extends JPanel {
 
-    boolean aoeu = false;
-
     private boolean mDrawHead = false;
     private boolean mDrawBody = false;
     private boolean mDrawLeftArm = false;
@@ -106,11 +104,6 @@ public class HangmanScaffoldPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.BLACK);
-
-        if (!aoeu) {
-            System.out.println(g.getFont());
-            aoeu = true;
-        }
 
         /**
          * Drawing constants
