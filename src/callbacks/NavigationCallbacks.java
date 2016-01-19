@@ -1,5 +1,7 @@
 package callbacks;
 
+import games.GameResults;
+
 /**
  * Interface that defines transitions to different screens in the app
  * So different classes can tell the implementing class to switch screens
@@ -14,5 +16,5 @@ public interface NavigationCallbacks {
 
     void startNewHangmanGame();
 
-    void startFinishScreen();
+    void startFinishScreen(GameResults results);
 }

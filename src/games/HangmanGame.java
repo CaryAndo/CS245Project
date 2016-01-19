@@ -19,10 +19,12 @@ public class HangmanGame {
 
     private boolean mIsGameOver = false;
     private int mPoints = 100;
+    private int mIncorrectGuesses = 0;
     private String mWord = "";
     private Set<Character> attemptedLetters = new HashSet<>();
     private GameResults mResults = null;
     private char[] successfulLetters;
+    private GameResults results;
 
     private HangmanWordPanel mWordPanel;
     private HangmanScaffoldPanel mScaffoldPanel;
@@ -77,6 +79,7 @@ public class HangmanGame {
 
         attemptedLetters.add(letter);
         mScaffoldPanel.addNextBodyPart();
+        mIncorrectGuesses++;
 
         if (mPoints <= 0) {
             mIsGameOver = true;
@@ -86,6 +89,7 @@ public class HangmanGame {
     }
 
     public boolean isGameOver() {
+        calculateGameState();
         return mIsGameOver;
     }
 
@@ -94,22 +98,16 @@ public class HangmanGame {
     }
 
     private void calculateGameState() {
-        boolean triedAllLetters = false;
+        boolean triedAllLetters = true;
         for (int i = 0; i < mWord.length(); i++) {
             if (!attemptedLetters.contains(mWord.charAt(i))) {
-                triedAllLetters = true;
+                triedAllLetters = false;
                 break;
             }
         }
 
-        if (triedAllLetters) {
-            if (mPoints > 0) {
-                // we won
-                mIsGameOver = true;
-            } else {
-                // we lose
-            }
+        if (triedAllLetters || mPoints <= 0 || mIncorrectGuesses >= 6) {
+            mIsGameOver = true;
         }
-
     }
 }

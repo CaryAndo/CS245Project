@@ -1,6 +1,7 @@
 package GUI;
 
 import callbacks.NavigationCallbacks;
+import games.GameResults;
 
 import javax.swing.*;
 import java.awt.*;
@@ -87,7 +88,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
     }
 
     @Override
-    public void startFinishScreen() {
-        // TODO
+    public void startFinishScreen(GameResults results) {
+        // TODO: Create custom JPanel to display the results
     }
 }

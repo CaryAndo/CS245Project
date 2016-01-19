@@ -2,6 +2,11 @@ package GUI.hangman;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by cary on 1/15/16.
@@ -14,6 +19,8 @@ public class HangmanScaffoldPanel extends JPanel {
     private boolean mDrawRightArm = false;
     private boolean mDrawRightLeg = false;
     private boolean mDrawLeftLeg = false;
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    private String currentDateString = "";
 
     public boolean isDrawingRightLeg() {
         return mDrawRightLeg;
@@ -82,7 +89,15 @@ public class HangmanScaffoldPanel extends JPanel {
     }
 
     public HangmanScaffoldPanel() {
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentDateString = dateFormat.format(Calendar.getInstance().getTime());
+                repaint();
+            }
+        });
 
+        timer.start();
     }
 
     @Override
@@ -179,5 +194,7 @@ public class HangmanScaffoldPanel extends JPanel {
             g2.setColor(Color.RED);
             g2.drawString("WASTED", manXPosition, manYBottomofTorso + MAN_LEG_HEIGHT*2);
         }
+
+        g2.drawString(currentDateString, getWidth() - 150, 20);
     }
 }

@@ -99,9 +99,9 @@ public class HangmanGamePanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     mGame.attemptLetter(c);
-                    /*if (!mGame.attemptLetter(c)) {
-                        hangmanScaffoldPanel.addNextBodyPart();
-                    }*/
+                    if (mGame.isGameOver()) {
+                        mCallbacks.startFinishScreen(mGame.getGameResults());
+                    }
                 }
             });
             inputLettersPanel.add(tempButton);
