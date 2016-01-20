@@ -89,6 +89,16 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     @Override
     public void startFinishScreen(GameResults results) {
+
+        if (mCurrentScreenPanel != null) {
+            remove(mCurrentScreenPanel);
+        }
+
+        FinishScreenPanel finishScreenPanel = new FinishScreenPanel(this);
+        mCurrentScreenPanel = finishScreenPanel;
+
+        add(finishScreenPanel, BorderLayout.CENTER);
+        pack();
         // TODO: Create custom JPanel to display the results
     }
 }

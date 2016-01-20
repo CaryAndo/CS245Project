@@ -17,6 +17,7 @@ public class HangmanGamePanel extends JPanel {
 
     private NavigationCallbacks mCallbacks;
     private HangmanGame mGame;
+    private Timer mFinishTransitionTimer = null;
 
     public HangmanGamePanel() {
         super();
@@ -88,7 +89,7 @@ public class HangmanGamePanel extends JPanel {
 
         inputLettersPanel.setBackground(new Color(255, 255, 255));
 
-        mGame = new HangmanGame("test", hangmanWordPanel, hangmanScaffoldPanel);
+        mGame = new HangmanGame("HelloWorld", hangmanWordPanel, hangmanScaffoldPanel);
 
         inputLettersPanel.setLayout(lettersLayout);
         for (int i = 0; i < 26; i++) {
@@ -99,8 +100,13 @@ public class HangmanGamePanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     mGame.attemptLetter(c);
-                    if (mGame.isGameOver()) {
-                        mCallbacks.startFinishScreen(mGame.getGameResults());
+                    if (mGame.isGameOver() && mFinishTransitionTimer == null) {
+                        mFinishTransitionTimer = new Timer(
+                                3000,
+                                a -> mCallbacks.startFinishScreen(mGame.getGameResults())
+                        );
+                        mFinishTransitionTimer.setRepeats(false);
+                        mFinishTransitionTimer.start();
                     }
                 }
             });

@@ -20,7 +20,7 @@ public class HangmanScaffoldPanel extends JPanel {
     private boolean mDrawRightLeg = false;
     private boolean mDrawLeftLeg = false;
     private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    private String currentDateString = "";
+    private String currentDateString = dateFormat.format(Calendar.getInstance().getTime());
 
     public boolean isDrawingRightLeg() {
         return mDrawRightLeg;
