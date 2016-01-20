@@ -1,6 +1,6 @@
 package GUI;
 
-import callbacks.FrameCallbacks;
+import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class SplashScreenPanel extends JPanel {
 
-    FrameCallbacks mCallbacks;
+    NavigationCallbacks mCallbacks;
 
     public SplashScreenPanel() {
         super();
@@ -46,7 +46,7 @@ public class SplashScreenPanel extends JPanel {
          * */
         JLabel splashSubtextLabel = new JLabel();
         splashSubtextLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        splashSubtextLabel.setText("By team caryAndRichard");
+        splashSubtextLabel.setText("By team CaR");
         splashSubtextLabel.setForeground(Color.white);
         splashSubtextLabel.setHorizontalAlignment(JLabel.CENTER);
         splashSubtextLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 75, 0));
