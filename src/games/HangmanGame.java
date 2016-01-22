@@ -80,6 +80,7 @@ public class HangmanGame {
         attemptedLetters.add(letter);
         mScaffoldPanel.addNextBodyPart();
         mIncorrectGuesses++;
+        mPoints -= 10;
 
         if (mPoints <= 0) {
             mIsGameOver = true;
