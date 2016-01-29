@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.panels.*;
 import callbacks.NavigationCallbacks;
 import games.GameResults;
 
@@ -73,6 +74,32 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
     }
 
     @Override
+    public void startCreditsScreen() {
+        if (mCurrentScreenPanel != null) {
+            remove(mCurrentScreenPanel);
+        }
+
+        JPanel creditsPanel = new CreditsPanel(this);
+        mCurrentScreenPanel = creditsPanel;
+
+        add(creditsPanel, BorderLayout.CENTER);
+        pack();
+    }
+
+    @Override
+    public void startHighScoreScreen() {
+        if (mCurrentScreenPanel != null) {
+            remove(mCurrentScreenPanel);
+        }
+
+        JPanel highScoresPanel = new HighScorePanel(this);
+        mCurrentScreenPanel = highScoresPanel;
+
+        add(highScoresPanel, BorderLayout.CENTER);
+        pack();
+    }
+
+    @Override
     public void startNewHangmanGame() {
         System.out.println("Starting a new game!");
 
@@ -94,7 +121,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
             remove(mCurrentScreenPanel);
         }
 
-        FinishScreenPanel finishScreenPanel = new FinishScreenPanel(this);
+        FinishScreenPanel finishScreenPanel = new FinishScreenPanel(this, results);
         mCurrentScreenPanel = finishScreenPanel;
 
         add(finishScreenPanel, BorderLayout.CENTER);

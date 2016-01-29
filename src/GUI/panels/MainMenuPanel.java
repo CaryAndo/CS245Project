@@ -1,5 +1,6 @@
-package GUI;
+package GUI.panels;
 
+import GUI.ImagePanel;
 import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
@@ -77,12 +78,18 @@ public class MainMenuPanel extends JPanel {
          * */
         JButton highScoresButton = new JButton();
         highScoresButton.setText("High Scores");
+        highScoresButton.addActionListener(e -> {
+            mCallbacks.startHighScoreScreen();
+        });
 
         /**
          * Credits Button
          * */
         JButton creditsButton = new JButton();
         creditsButton.setText("Credits");
+        creditsButton.addActionListener(e -> {
+            mCallbacks.startCreditsScreen();
+        });
 
         /**
          * Layout for the Panel

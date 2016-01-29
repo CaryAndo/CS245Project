@@ -1,4 +1,4 @@
-package GUI;
+package GUI.panels;
 
 import callbacks.NavigationCallbacks;
 

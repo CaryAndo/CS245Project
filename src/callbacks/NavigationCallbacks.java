@@ -10,9 +10,13 @@ import games.GameResults;
  */
 public interface NavigationCallbacks {
 
+    void startSplashScreen();
+
     void startMainMenu();
 
-    void startSplashScreen();
+    void startCreditsScreen();
+
+    void startHighScoreScreen();
 
     void startNewHangmanGame();
 

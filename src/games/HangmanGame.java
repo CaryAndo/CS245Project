@@ -18,20 +18,17 @@ import java.util.Set;
 public class HangmanGame {
 
     private boolean mIsGameOver = false;
+    private boolean mDidWin = false;
     private int mPoints = 100;
     private int mIncorrectGuesses = 0;
     private String mWord = "";
     private Set<Character> attemptedLetters = new HashSet<>();
-    private GameResults mResults = null;
-    private char[] successfulLetters;
-    private GameResults results;
 
     private HangmanWordPanel mWordPanel;
     private HangmanScaffoldPanel mScaffoldPanel;
 
     public HangmanGame(String word, HangmanWordPanel wordPanel, HangmanScaffoldPanel scaffoldPanel) {
         this.mWord = word.toUpperCase();
-        this.successfulLetters = new char[mWord.length()];
         this.mWordPanel = wordPanel;
 
         StringBuilder temp = new StringBuilder();
@@ -82,9 +79,11 @@ public class HangmanGame {
         mIncorrectGuesses++;
         mPoints -= 10;
 
-        if (mPoints <= 0) {
+        /*if (mPoints <= 0) {
             mIsGameOver = true;
-        }
+        }*/
+
+        calculateGameState();
 
         return false;
     }
@@ -95,7 +94,17 @@ public class HangmanGame {
     }
 
     public GameResults getGameResults() {
-        return new GameResults();
+        GameResults results = new GameResults();
+        results.setDidFinish(mIsGameOver);
+        results.setDidWin(mDidWin);
+        results.setIncorrectGuesses(mIncorrectGuesses);
+        if (mIsGameOver) {
+            results.setPoints(mPoints);
+        } else {
+            results.setPoints(0); // Game was skipped, give the user 0 points
+        }
+
+        return results;
     }
 
     private void calculateGameState() {
@@ -107,8 +116,18 @@ public class HangmanGame {
             }
         }
 
-        if (triedAllLetters || mPoints <= 0 || mIncorrectGuesses >= 6) {
+        if (triedAllLetters) {
             mIsGameOver = true;
+            if (mIncorrectGuesses < 6) {
+                mDidWin = true;
+                mScaffoldPanel.setWinner(true);
+                mScaffoldPanel.repaint();
+            } else {
+                mDidWin = false;
+            }
+        } else if (mIncorrectGuesses >= 6 || mPoints <= 40) {
+            mIsGameOver = true;
+            mDidWin = false;
         }
     }
 }
