@@ -54,7 +54,7 @@ public class HangmanGamePanel extends JPanel {
         setBackground(Color.white);
         setPreferredSize(new Dimension(600, 400));
 
-        GridLayout lettersLayout = new GridLayout(2, 13);
+        GridLayout lettersLayout = new GridLayout(2, 14);
 
         /**
          * The Scaffold JPanel, on which is drawn the man to be hanged...
@@ -75,16 +75,31 @@ public class HangmanGamePanel extends JPanel {
         inputLettersPanel.setBackground(new Color(255, 255, 255));
 
         /**
+         * Button to skip the game
+         * */
+        JButton skipButton = new JButton();
+        skipButton.setMinimumSize(new Dimension(20, 20));
+        skipButton.setText("Skip");
+        skipButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mCallbacks.startFinishScreen(mGame.getGameResults());
+            }
+        });
+
+        /**
          * Layout for the Scaffold Panel
          * */
         GroupLayout scaffoldLayout = new GroupLayout(hangmanScaffoldPanel);
         hangmanScaffoldPanel.setLayout(scaffoldLayout);
         scaffoldLayout.setHorizontalGroup(
                 scaffoldLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(skipButton)
                         .addGap(0, 415, Short.MAX_VALUE)
         );
         scaffoldLayout.setVerticalGroup(
                 scaffoldLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(skipButton)
                         .addGap(0, 164, Short.MAX_VALUE)
         );
 

@@ -144,7 +144,7 @@ public class HangmanScaffoldPanel extends JPanel {
         g2.setStroke(new BasicStroke(3));
 
         g2.setFont(new Font("Comic Sans MS", Font.BOLD, 28));
-        g2.drawString("Hangman!", 5, 25);
+        g2.drawString("Hangman!", 5, 50);
 
         if (mDrawHead) {
             g2.drawOval(
