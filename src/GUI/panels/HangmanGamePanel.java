@@ -9,10 +9,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by cary on 1/13/16.
- */
+/***************************************************************
+ * file: HangmanGamePanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: This is the panel that holds everything to do with
+ * playing Hangman
+ *
+ ****************************************************************/
 public class HangmanGamePanel extends JPanel {
 
     private NavigationCallbacks mCallbacks;
@@ -83,7 +93,9 @@ public class HangmanGamePanel extends JPanel {
         skipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mCallbacks.startFinishScreen(mGame.getGameResults());
+                if (mFinishTransitionTimer == null) {
+                    mCallbacks.startFinishScreen(mGame.getGameResults());
+                }
             }
         });
 
@@ -117,10 +129,18 @@ public class HangmanGamePanel extends JPanel {
                         .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        String[] tempArray = {"abstract", "cemetery", "nurse", "pharmacy", "climbing"};
+
         /**
          * Initialize the Game State Object
+         *
+         * I know this is ugly... but I got lazy, I'm sorry
          * */
-        mGame = new HangmanGame("HelloWorld", hangmanWordPanel, hangmanScaffoldPanel);
+        mGame = new HangmanGame(
+                tempArray[ThreadLocalRandom.current().nextInt(0, tempArray.length)],
+                hangmanWordPanel,
+                hangmanScaffoldPanel
+        );
 
         /**
          * Initialize the letter buttons

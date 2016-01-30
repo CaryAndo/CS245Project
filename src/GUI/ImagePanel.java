@@ -7,9 +7,17 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by cary on 1/8/16.
- */
+/***************************************************************
+ * file: ImagePanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: A custom Panel that draws a picture, its flexible
+ *
+ ****************************************************************/
 public class ImagePanel extends JPanel {
 
     private BufferedImage image;

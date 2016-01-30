@@ -6,9 +6,18 @@ import games.GameResults;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by Richard on 1/18/16.
- */
+/***************************************************************
+ * file: FinishScreenPanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: The Panel that holds the the Finish screen and summarizes
+ * a GameResults Object
+ *
+ ****************************************************************/
 public class FinishScreenPanel extends JPanel {
 
     private NavigationCallbacks mCallbacks;

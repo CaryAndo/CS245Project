@@ -8,13 +8,20 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Represents a game of Hangman being played
+
+/***************************************************************
+ * file: HangmanGame.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: Represents a game of Hangman being played
  * It should be responsible for maintaining
  * game state and providing an interface to play
  *
- * Created by cary on 1/13/16.
- */
+ ****************************************************************/
 public class HangmanGame {
 
     private boolean mIsGameOver = false;

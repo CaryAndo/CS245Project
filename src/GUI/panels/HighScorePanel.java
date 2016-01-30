@@ -4,9 +4,18 @@ import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
 
-/**
- * Created by richard on 1/29/16.
- */
+/***************************************************************
+ * file: HighScorePanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: The Screen that holds the High Scores
+ * TODO: Add functionality to this (Next checkpoint)
+ *
+ ****************************************************************/
 public class HighScorePanel extends JPanel {
 
     private NavigationCallbacks mCallbacks;

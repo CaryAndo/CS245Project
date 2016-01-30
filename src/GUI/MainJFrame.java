@@ -9,9 +9,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by cary on 1/8/16.
- */
+/***************************************************************
+ * file: MainJFrame.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: This is the Main JFrame where everything takes place
+ *
+ ****************************************************************/
 public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     private JPanel mCurrentScreenPanel; // A reference to the current JPanel that is being displayed in the window

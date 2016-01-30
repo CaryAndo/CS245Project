@@ -8,9 +8,19 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * Created by cary on 1/15/16.
- */
+/***************************************************************
+ * file: HangmanScaffoldPanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: This is the panel upon which the Scaffold is drawn
+ * and upon which we display most of the feedback for a game of
+ * hangman
+ *
+ ****************************************************************/
 public class HangmanScaffoldPanel extends JPanel {
 
     private boolean mDrawHead = false;

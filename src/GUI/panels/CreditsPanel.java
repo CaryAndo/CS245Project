@@ -4,9 +4,17 @@ import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
 
-/**
- * Created by richard on 1/29/16.
- */
+/***************************************************************
+ * file: CreditsPanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: The panel that holds the credits screen
+ *
+ ****************************************************************/
 public class CreditsPanel extends JPanel {
 
     private NavigationCallbacks mCallbacks;
