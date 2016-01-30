@@ -1,5 +1,6 @@
-package GUI;
+package GUI.panels;
 
+import GUI.ImagePanel;
 import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
@@ -7,9 +8,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by cary on 1/13/16.
- */
+/***************************************************************
+ * file: MainMenuPanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: The Panel that holds the main menu
+ *
+ ****************************************************************/
 public class MainMenuPanel extends JPanel {
 
     private NavigationCallbacks mCallbacks;
@@ -77,12 +86,18 @@ public class MainMenuPanel extends JPanel {
          * */
         JButton highScoresButton = new JButton();
         highScoresButton.setText("High Scores");
+        highScoresButton.addActionListener(e -> {
+            mCallbacks.startHighScoreScreen();
+        });
 
         /**
          * Credits Button
          * */
         JButton creditsButton = new JButton();
         creditsButton.setText("Credits");
+        creditsButton.addActionListener(e -> {
+            mCallbacks.startCreditsScreen();
+        });
 
         /**
          * Layout for the Panel

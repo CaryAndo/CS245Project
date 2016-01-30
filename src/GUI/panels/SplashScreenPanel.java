@@ -1,13 +1,21 @@
-package GUI;
+package GUI.panels;
 
 import callbacks.NavigationCallbacks;
 
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by cary on 1/13/16.
- */
+/***************************************************************
+ * file: SplashScreenPanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: The splash screen...
+ *
+ ****************************************************************/
 public class SplashScreenPanel extends JPanel {
 
     NavigationCallbacks mCallbacks;

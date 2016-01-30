@@ -3,9 +3,17 @@ package GUI.hangman;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by cary on 1/15/16.
- */
+/***************************************************************
+ * file: HangmanWordPanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: The Panel upon which is drawn the partially solved word
+ *
+ ****************************************************************/
 public class HangmanWordPanel extends JPanel {
 
     private String mWord = "";

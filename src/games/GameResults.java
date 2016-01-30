@@ -1,9 +1,19 @@
 package games;
 
 /**
- * Multi-purpose POJO to hold details about a game that was played
  * Created by cary on 1/15/16.
  */
+/***************************************************************
+ * file: GameResults.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: Multi-purpose POJO to hold details about a game that was played
+ *
+ ****************************************************************/
 public class GameResults {
 
     private boolean mDidFinish = false;

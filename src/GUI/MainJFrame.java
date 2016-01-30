@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.panels.*;
 import callbacks.NavigationCallbacks;
 import games.GameResults;
 
@@ -8,9 +9,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by cary on 1/8/16.
- */
+/***************************************************************
+ * file: MainJFrame.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: This is the Main JFrame where everything takes place
+ *
+ ****************************************************************/
 public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     private JPanel mCurrentScreenPanel; // A reference to the current JPanel that is being displayed in the window
@@ -73,6 +82,32 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
     }
 
     @Override
+    public void startCreditsScreen() {
+        if (mCurrentScreenPanel != null) {
+            remove(mCurrentScreenPanel);
+        }
+
+        JPanel creditsPanel = new CreditsPanel(this);
+        mCurrentScreenPanel = creditsPanel;
+
+        add(creditsPanel, BorderLayout.CENTER);
+        pack();
+    }
+
+    @Override
+    public void startHighScoreScreen() {
+        if (mCurrentScreenPanel != null) {
+            remove(mCurrentScreenPanel);
+        }
+
+        JPanel highScoresPanel = new HighScorePanel(this);
+        mCurrentScreenPanel = highScoresPanel;
+
+        add(highScoresPanel, BorderLayout.CENTER);
+        pack();
+    }
+
+    @Override
     public void startNewHangmanGame() {
         System.out.println("Starting a new game!");
 
@@ -94,7 +129,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
             remove(mCurrentScreenPanel);
         }
 
-        FinishScreenPanel finishScreenPanel = new FinishScreenPanel(this);
+        FinishScreenPanel finishScreenPanel = new FinishScreenPanel(this, results);
         mCurrentScreenPanel = finishScreenPanel;
 
         add(finishScreenPanel, BorderLayout.CENTER);

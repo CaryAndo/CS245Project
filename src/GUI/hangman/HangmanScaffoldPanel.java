@@ -8,9 +8,19 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * Created by cary on 1/15/16.
- */
+/***************************************************************
+ * file: HangmanScaffoldPanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: This is the panel upon which the Scaffold is drawn
+ * and upon which we display most of the feedback for a game of
+ * hangman
+ *
+ ****************************************************************/
 public class HangmanScaffoldPanel extends JPanel {
 
     private boolean mDrawHead = false;
@@ -21,6 +31,7 @@ public class HangmanScaffoldPanel extends JPanel {
     private boolean mDrawLeftLeg = false;
     private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     private String currentDateString = dateFormat.format(Calendar.getInstance().getTime());
+    private boolean mWinner = false;
 
     public boolean isDrawingRightLeg() {
         return mDrawRightLeg;
@@ -68,6 +79,10 @@ public class HangmanScaffoldPanel extends JPanel {
 
     public void setDrawLeftLeg(boolean mDrawLeftLeg) {
         this.mDrawLeftLeg = mDrawLeftLeg;
+    }
+
+    public void setWinner(boolean winner) {
+        mWinner = winner;
     }
 
     public void addNextBodyPart() {
@@ -138,6 +153,9 @@ public class HangmanScaffoldPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
 
+        g2.setFont(new Font("Comic Sans MS", Font.BOLD, 28));
+        g2.drawString("Hangman!", 5, 50);
+
         if (mDrawHead) {
             g2.drawOval(
                     getWidth() / 3 - LINE_THICKNESS / 2 + (MAN_WIDTH / 2) - MAN_HEAD_DIAMETER / 2,
@@ -192,9 +210,14 @@ public class HangmanScaffoldPanel extends JPanel {
             ); // Draw the man's left leg
 
             g2.setColor(Color.RED);
-            //g2.drawString("WASTED", manXPosition, manYBottomofTorso + MAN_LEG_HEIGHT*2);
             g2.setFont(new Font("Times New Roman", Font.BOLD, 60));
             g2.drawString("WASTED", 25, manYBottomofTorso);
+        }
+
+        if (mWinner) {
+            g2.setColor(Color.GREEN);
+            g2.setFont(new Font("Times New Roman", Font.BOLD, 60));
+            g2.drawString("WINNER", 25, manYBottomofTorso);
         }
 
         g2.setFont(UIManager.getDefaults().getFont("TabbedPane.font")); // Set the font back to default

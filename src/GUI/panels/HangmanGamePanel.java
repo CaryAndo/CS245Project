@@ -1,4 +1,4 @@
-package GUI;
+package GUI.panels;
 
 import GUI.hangman.HangmanScaffoldPanel;
 import GUI.hangman.HangmanWordPanel;
@@ -9,10 +9,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by cary on 1/13/16.
- */
+/***************************************************************
+ * file: HangmanGamePanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 01/29/2016
+ *
+ * purpose: This is the panel that holds everything to do with
+ * playing Hangman
+ *
+ ****************************************************************/
 public class HangmanGamePanel extends JPanel {
 
     private NavigationCallbacks mCallbacks;
@@ -54,43 +64,87 @@ public class HangmanGamePanel extends JPanel {
         setBackground(Color.white);
         setPreferredSize(new Dimension(600, 400));
 
-        GridLayout lettersLayout = new GridLayout(2, 13);
+        GridLayout lettersLayout = new GridLayout(2, 14);
 
-        // TODO: rename these panels
+        /**
+         * The Scaffold JPanel, on which is drawn the man to be hanged...
+         * */
         final HangmanScaffoldPanel hangmanScaffoldPanel = new HangmanScaffoldPanel();
-        HangmanWordPanel hangmanWordPanel = new HangmanWordPanel();
-        JPanel inputLettersPanel = new JPanel();
-
         hangmanScaffoldPanel.setBackground(new Color(255, 255, 255));
 
+        /**
+         * The JPanel that will hold all the partially filled in word
+         * */
+        HangmanWordPanel hangmanWordPanel = new HangmanWordPanel();
+        hangmanWordPanel.setBackground(new Color(255, 255, 255));
+
+        /**
+         * The JPanel that holds all the letter buttons
+         * */
+        JPanel inputLettersPanel = new JPanel();
+        inputLettersPanel.setBackground(new Color(255, 255, 255));
+
+        /**
+         * Button to skip the game
+         * */
+        JButton skipButton = new JButton();
+        skipButton.setMinimumSize(new Dimension(20, 20));
+        skipButton.setText("Skip");
+        skipButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (mFinishTransitionTimer == null) {
+                    mCallbacks.startFinishScreen(mGame.getGameResults());
+                }
+            }
+        });
+
+        /**
+         * Layout for the Scaffold Panel
+         * */
         GroupLayout scaffoldLayout = new GroupLayout(hangmanScaffoldPanel);
         hangmanScaffoldPanel.setLayout(scaffoldLayout);
         scaffoldLayout.setHorizontalGroup(
                 scaffoldLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(skipButton)
                         .addGap(0, 415, Short.MAX_VALUE)
         );
         scaffoldLayout.setVerticalGroup(
                 scaffoldLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(skipButton)
                         .addGap(0, 164, Short.MAX_VALUE)
         );
 
-        hangmanWordPanel.setBackground(new Color(255, 255, 255));
-
-        GroupLayout jPanel2Layout = new GroupLayout(hangmanWordPanel);
-        hangmanWordPanel.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+        /**
+         * Layout for the Hangman Word Panel
+         * */
+        GroupLayout hangmanWordPanelLayout = new GroupLayout(hangmanWordPanel);
+        hangmanWordPanel.setLayout(hangmanWordPanelLayout);
+        hangmanWordPanelLayout.setHorizontalGroup(
+                hangmanWordPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+        hangmanWordPanelLayout.setVerticalGroup(
+                hangmanWordPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        inputLettersPanel.setBackground(new Color(255, 255, 255));
+        String[] tempArray = {"abstract", "cemetery", "nurse", "pharmacy", "climbing"};
 
-        mGame = new HangmanGame("HelloWorld", hangmanWordPanel, hangmanScaffoldPanel);
+        /**
+         * Initialize the Game State Object
+         *
+         * I know this is ugly... but I got lazy, I'm sorry
+         * */
+        mGame = new HangmanGame(
+                tempArray[ThreadLocalRandom.current().nextInt(0, tempArray.length)],
+                hangmanWordPanel,
+                hangmanScaffoldPanel
+        );
 
+        /**
+         * Initialize the letter buttons
+         * */
         inputLettersPanel.setLayout(lettersLayout);
         for (int i = 0; i < 26; i++) {
             char c = (char) ('A' + i);
@@ -100,6 +154,7 @@ public class HangmanGamePanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     mGame.attemptLetter(c);
+                    tempButton.setEnabled(false);
                     if (mGame.isGameOver() && mFinishTransitionTimer == null) {
                         mFinishTransitionTimer = new Timer(
                                 3000,
@@ -113,6 +168,9 @@ public class HangmanGamePanel extends JPanel {
             inputLettersPanel.add(tempButton);
         }
 
+        /**
+         * Add all the Components to the Layout
+         * */
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
