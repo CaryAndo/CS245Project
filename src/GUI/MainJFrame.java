@@ -123,6 +123,20 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
     }
 
     @Override
+    public void startBubbleClickGame() {
+
+        if (mCurrentScreenPanel != null) {
+            remove(mCurrentScreenPanel);
+        }
+
+        JPanel bubbleClickGamePanel = new BubbleClickGamePanel();
+        mCurrentScreenPanel = bubbleClickGamePanel;
+
+        add(bubbleClickGamePanel, BorderLayout.CENTER);
+        pack();
+    }
+
+    @Override
     public void startFinishScreen(GameResults results) {
 
         if (mCurrentScreenPanel != null) {

@@ -27,5 +27,7 @@ public interface NavigationCallbacks {
 
     void startNewHangmanGame();
 
+    void startBubbleClickGame();
+
     void startFinishScreen(GameResults results);
 }
