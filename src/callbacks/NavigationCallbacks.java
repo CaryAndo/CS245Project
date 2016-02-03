@@ -1,5 +1,6 @@
 package callbacks;
 
+import com.sun.istack.internal.Nullable;
 import games.GameResults;
 
 
@@ -27,7 +28,7 @@ public interface NavigationCallbacks {
 
     void startNewHangmanGame();
 
-    void startBubbleClickGame();
+    void startBubbleClickGame(@Nullable GameResults results);
 
-    void startFinishScreen(GameResults results);
+    void startFinishScreen(@Nullable GameResults results);
 }

@@ -5,6 +5,7 @@ import games.GameResults;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 /***************************************************************
  * file: FinishScreenPanel.java
@@ -30,10 +31,10 @@ public class FinishScreenPanel extends JPanel {
     private JPanel buttonPanel;
     private JButton button;
 
-    public FinishScreenPanel(NavigationCallbacks callbacks, GameResults results) {
+    public FinishScreenPanel(NavigationCallbacks callbacks, List<GameResults> results) {
         super();
         this.mCallbacks = callbacks;
-        this.mGameResults = results;
+        this.mGameResults = results.get(0);
         initUI();
     }
 

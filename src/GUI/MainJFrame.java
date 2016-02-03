@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /***************************************************************
  * file: MainJFrame.java
@@ -23,9 +25,13 @@ import java.awt.event.ActionListener;
 public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     private JPanel mCurrentScreenPanel; // A reference to the current JPanel that is being displayed in the window
+    private List<GameResults> mResultList; // Set of GameResults keeping track of all the games played (to summarize at the end)
 
     public MainJFrame() {
         super();
+
+        mResultList = new ArrayList<>();
+
         initUI();
     }
 
@@ -123,13 +129,17 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
     }
 
     @Override
-    public void startBubbleClickGame() {
+    public void startBubbleClickGame(GameResults results) {
+
+        if (results != null) {
+            mResultList.add(results);
+        }
 
         if (mCurrentScreenPanel != null) {
             remove(mCurrentScreenPanel);
         }
 
-        JPanel bubbleClickGamePanel = new BubbleClickGamePanel();
+        JPanel bubbleClickGamePanel = new BubbleClickGamePanel(this);
         mCurrentScreenPanel = bubbleClickGamePanel;
 
         add(bubbleClickGamePanel, BorderLayout.CENTER);
@@ -139,15 +149,18 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
     @Override
     public void startFinishScreen(GameResults results) {
 
+        if (results != null) {
+            mResultList.add(results);
+        }
+
         if (mCurrentScreenPanel != null) {
             remove(mCurrentScreenPanel);
         }
 
-        FinishScreenPanel finishScreenPanel = new FinishScreenPanel(this, results);
+        FinishScreenPanel finishScreenPanel = new FinishScreenPanel(this, mResultList);
         mCurrentScreenPanel = finishScreenPanel;
 
         add(finishScreenPanel, BorderLayout.CENTER);
         pack();
-        // TODO: Create custom JPanel to display the results
     }
 }
