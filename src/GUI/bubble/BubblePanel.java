@@ -1,5 +1,7 @@
 package GUI.bubble;
 
+import callbacks.BubbleClickCallbacks;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,11 +10,16 @@ import java.awt.*;
  */
 public class BubblePanel extends JPanel {
 
-    Color mColor;
+    Color mColor = Color.RED; // Arbitrary default color
+    BubbleClickCallbacks mCallbacks;
 
-    public BubblePanel(Color color) {
-        this.mColor = color;
+    public BubblePanel(BubbleClickCallbacks callbacks) {
+        this.mCallbacks = callbacks;
         setOpaque(false);
+    }
+
+    public void setColor(Color color) {
+        this.mColor = color;
     }
 
     @Override
