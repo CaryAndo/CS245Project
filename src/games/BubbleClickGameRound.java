@@ -63,4 +63,7 @@ public class BubbleClickGameRound {
         return mColor;
     }
 
+    public String toString() {
+        return "Points: " + mPoints + " Color: " + mColor;
+    }
 }
