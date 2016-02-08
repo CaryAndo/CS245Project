@@ -58,6 +58,8 @@ public class BubbleClickGame {
         ArrayList<Color> colorList = new ArrayList<>();
         ArrayList<Color> tempColorList = new ArrayList<>();
 
+        System.out.println("Generating new list of random colors");
+
         Color[] potentialColors = {
                 Color.RED,
                 Color.GREEN,
@@ -70,7 +72,7 @@ public class BubbleClickGame {
         };
 
         /**
-         *
+         * Add Colors that are not the special color to a temporary list
          * */
         for (Color potentialColor : potentialColors) {
             if (!potentialColor.equals(getCurrentColor())) {
@@ -79,7 +81,7 @@ public class BubbleClickGame {
         }
 
         /**
-         * Add spurious colors
+         * Add spurious colors from the temporary list to the final list
          * */
         for (int i = 0; i < 4; i++) {
             int tempIndex = ThreadLocalRandom.current().nextInt(0, tempColorList.size()-1);
@@ -90,7 +92,9 @@ public class BubbleClickGame {
         /**
          * Insert the actual color into a random array position
          * */
-        colorList.add(ThreadLocalRandom.current().nextInt(0, colorList.size()-1), getCurrentColor());
+        int correctIndex = ThreadLocalRandom.current().nextInt(0, colorList.size()-1);
+        colorList.add(correctIndex, getCurrentColor());
+        System.out.println("Correct color is at position: " + correctIndex + " out of " + colorList.size());
 
         return colorList;
     }
@@ -104,5 +108,9 @@ public class BubbleClickGame {
         results.setDidFinish(mIsGameOver);
         results.setPoints(getPoints());
         return results;
+    }
+
+    public String getCurrentColorString() {
+        return mRounds[mCurrentBubbleClickGameRound].getColorName();
     }
 }

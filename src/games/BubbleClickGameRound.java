@@ -63,7 +63,15 @@ public class BubbleClickGameRound {
         return mColor;
     }
 
+    public String getColorName() {
+        return sColorMap.get(mColor);
+    }
+
     public String toString() {
         return "Points: " + mPoints + " Color: " + mColor;
+    }
+
+    public static String getColorName(Color color) {
+        return sColorMap.get(color);
     }
 }

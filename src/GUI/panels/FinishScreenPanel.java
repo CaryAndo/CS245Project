@@ -30,11 +30,13 @@ public class FinishScreenPanel extends JPanel {
     private JPanel imagePanel;
     private JPanel buttonPanel;
     private JButton button;
+    private List<GameResults> mResultsList;
 
     public FinishScreenPanel(NavigationCallbacks callbacks, List<GameResults> results) {
         super();
         this.mCallbacks = callbacks;
         this.mGameResults = results.get(0);
+        this.mResultsList = results;
         initUI();
     }
 
@@ -47,7 +49,11 @@ public class FinishScreenPanel extends JPanel {
         setBackground(Color.BLACK);
 
         scoreLabel = new JLabel();
-        scoreLabel.setText("Score: " + mGameResults.getPoints());
+        int totalScore = 0;
+        for (GameResults results : mResultsList) {
+            totalScore += results.getPoints();
+        }
+        scoreLabel.setText("Score: " + totalScore);
         scoreLabel.setFont(new Font("Times New Roman", Font.BOLD, 24));
         scoreLabel.setForeground(Color.WHITE);
 

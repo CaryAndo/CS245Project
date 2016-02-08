@@ -4,10 +4,17 @@ import GUI.bubble.BubblePanel;
 import callbacks.BubbleClickCallbacks;
 import callbacks.NavigationCallbacks;
 import games.BubbleClickGame;
+import games.BubbleClickGameRound;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by cary on 2/3/16.
@@ -24,34 +31,89 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
     private NavigationCallbacks mCallbacks;
     private BubbleClickGame mGame;
 
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    private String mCurrentDateString = dateFormat.format(Calendar.getInstance().getTime());
+
     public BubbleClickGamePanel(NavigationCallbacks callbacks) {
         this.mCallbacks = callbacks;
         this.mGame = new BubbleClickGame();
 
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mCurrentDateString = dateFormat.format(Calendar.getInstance().getTime());
+                repaint();
+            }
+        });
+
+        timer.start();
+
         initUI();
-        setBubbles(mGame.getColors());
+        updateUIElements();
     }
 
     @Override
     public void click(Color color) {
         System.out.println("Attempting Color: " + color);
         mGame.attemptColor(color);
+        System.out.println("Current Score is: " + mGame.getPoints());
 
         if (mGame.isGameOver()) {
             mCallbacks.startFinishScreen(mGame.getGameResults());
             return;
         }
 
+        updateUIElements();
+    }
+
+    /**
+     * Update UI components based on the current round being played
+     * */
+    private void updateUIElements() {
         setBubbles(mGame.getColors());
+        jLabel1.setForeground(mGame.getCurrentColor());
+
+        ArrayList<Color> tempColorList = new ArrayList<>();
+
+        Color[] potentialColors = {
+                Color.RED,
+                Color.GREEN,
+                Color.BLUE,
+                Color.YELLOW,
+                Color.ORANGE,
+                Color.PINK,
+                Color.WHITE,
+                Color.BLACK
+        };
+
+        /**
+         * Add Colors that are not the special color to a temporary list
+         * */
+        for (Color potentialColor : potentialColors) {
+            if (!potentialColor.equals(mGame.getCurrentColor())) {
+                tempColorList.add(potentialColor);
+            }
+        }
+
+        jLabel1.setText(BubbleClickGameRound.getColorName(tempColorList.get(ThreadLocalRandom.current().nextInt(0, tempColorList.size()-1))));
     }
 
     private void setBubbles(ArrayList<Color> colors) {
-        System.out.println(colors);
+        //System.out.println(colors);
         mJBubble1.setColor(colors.get(0));
         mJBubble2.setColor(colors.get(1));
         mJBubble3.setColor(colors.get(2));
         mJBubble4.setColor(colors.get(3));
         mJBubble5.setColor(colors.get(4));
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        Graphics2D g2 = (Graphics2D) g;
+
+        g2.drawString(mCurrentDateString, getWidth() - 150, 20);
     }
 
     private void initUI() {
@@ -179,6 +241,4 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
 
         //setBubbles(mGame.getColors());
     }
-
-
 }
