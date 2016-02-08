@@ -70,26 +70,16 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
      * Update UI components based on the current round being played
      * */
     private void updateUIElements() {
-        setBubbles(mGame.getColors());
+        ArrayList<Color> colors = mGame.getColors();
+        setBubbles(colors);
         jLabel1.setForeground(mGame.getCurrentColor());
 
         ArrayList<Color> tempColorList = new ArrayList<>();
 
-        Color[] potentialColors = {
-                Color.RED,
-                Color.GREEN,
-                Color.BLUE,
-                Color.YELLOW,
-                Color.ORANGE,
-                Color.PINK,
-                Color.WHITE,
-                Color.BLACK
-        };
-
         /**
          * Add Colors that are not the special color to a temporary list
          * */
-        for (Color potentialColor : potentialColors) {
+        for (Color potentialColor : colors) {
             if (!potentialColor.equals(mGame.getCurrentColor())) {
                 tempColorList.add(potentialColor);
             }
