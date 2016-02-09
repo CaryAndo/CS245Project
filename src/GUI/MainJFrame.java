@@ -74,7 +74,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     @Override
     public void startMainMenu() {
-        System.out.println("Starting the main menu");
+        //System.out.println("Starting the main menu");
 
         if (mCurrentScreenPanel != null) {
             remove(mCurrentScreenPanel);
@@ -115,7 +115,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     @Override
     public void startNewHangmanGame() {
-        System.out.println("Starting a new game!");
+        //System.out.println("Starting a new game!");
 
         if (mCurrentScreenPanel != null) {
             remove(mCurrentScreenPanel);
@@ -130,6 +130,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     @Override
     public void startBubbleClickGame(GameResults results) {
+        mResultList = new ArrayList<>();
 
         if (results != null) {
             mResultList.add(results);

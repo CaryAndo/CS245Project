@@ -52,12 +52,8 @@ public class BubblePanel extends JPanel {
                 super.mouseEntered(e);
                 mIsHighlighted = true;
 
-                System.out.println("Bubble Color: " + mColor);
-                System.out.println("Highlight Color" + mColorHighlight);
-
-                /*Color temp = mColor;
-                mColor = mColorHighlight;
-                mColorHighlight = temp;*/
+                //System.out.println("Bubble Color: " + mColor);
+                //System.out.println("Highlight Color" + mColorHighlight);
 
                 repaint();
             }
@@ -67,12 +63,8 @@ public class BubblePanel extends JPanel {
                 super.mouseExited(e);
                 mIsHighlighted = false;
 
-                System.out.println("Bubble Color: " + mColor);
-                System.out.println("Highlight Color" + mColorHighlight);
-
-                /*Color temp = mColor;
-                mColor = mColorHighlight;
-                mColorHighlight = temp;*/
+                //System.out.println("Bubble Color: " + mColor);
+                //System.out.println("Highlight Color" + mColorHighlight);
 
                 repaint();
             }

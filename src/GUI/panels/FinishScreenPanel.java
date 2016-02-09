@@ -50,6 +50,7 @@ public class FinishScreenPanel extends JPanel {
 
         scoreLabel = new JLabel();
         int totalScore = 0;
+
         for (GameResults results : mResultsList) {
             totalScore += results.getPoints();
         }
