@@ -58,7 +58,7 @@ public class BubbleClickGame {
         ArrayList<Color> colorList = new ArrayList<>();
         ArrayList<Color> tempColorList = new ArrayList<>();
 
-        System.out.println("Generating new list of random colors");
+        //System.out.println("Generating new list of random colors");
 
         Color[] potentialColors = {
                 Color.RED,
@@ -92,9 +92,9 @@ public class BubbleClickGame {
         /**
          * Insert the actual color into a random array position
          * */
-        int correctIndex = ThreadLocalRandom.current().nextInt(0, colorList.size()-1);
+        int correctIndex = ThreadLocalRandom.current().nextInt(0, colorList.size());
         colorList.add(correctIndex, getCurrentColor());
-        System.out.println("Correct color is at position: " + correctIndex + " out of " + colorList.size());
+        //System.out.println("Correct color is at position: " + correctIndex + " out of " + colorList.size());
 
         return colorList;
     }

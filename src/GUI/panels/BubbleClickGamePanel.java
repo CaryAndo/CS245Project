@@ -54,7 +54,8 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
 
     @Override
     public void click(Color color) {
-        System.out.println("Attempting Color: " + color);
+        System.out.println("Attempting Color: " + color + " and current color is " + mGame.getCurrentColor());
+
         mGame.attemptColor(color);
         System.out.println("Current Score is: " + mGame.getPoints());
 

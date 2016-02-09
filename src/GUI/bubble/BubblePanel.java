@@ -44,11 +44,7 @@ public class BubblePanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                if (mIsHighlighted) {
-                    mCallbacks.click(mColorHighlight);
-                } else {
-                    mCallbacks.click(mColor);
-                }
+                mCallbacks.click(mColor);
             }
 
             @Override
@@ -56,9 +52,12 @@ public class BubblePanel extends JPanel {
                 super.mouseEntered(e);
                 mIsHighlighted = true;
 
-                Color temp = mColor;
+                System.out.println("Bubble Color: " + mColor);
+                System.out.println("Highlight Color" + mColorHighlight);
+
+                /*Color temp = mColor;
                 mColor = mColorHighlight;
-                mColorHighlight = temp;
+                mColorHighlight = temp;*/
 
                 repaint();
             }
@@ -68,9 +67,12 @@ public class BubblePanel extends JPanel {
                 super.mouseExited(e);
                 mIsHighlighted = false;
 
-                Color temp = mColor;
+                System.out.println("Bubble Color: " + mColor);
+                System.out.println("Highlight Color" + mColorHighlight);
+
+                /*Color temp = mColor;
                 mColor = mColorHighlight;
-                mColorHighlight = temp;
+                mColorHighlight = temp;*/
 
                 repaint();
             }
@@ -103,7 +105,12 @@ public class BubblePanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        g.setColor(mColor);
+        if (mIsHighlighted) {
+            g.setColor(mColorHighlight);
+        } else {
+            g.setColor(mColor);
+        }
+
         g.fillOval(0, 0, getWidth(), getHeight());
         super.paintComponent(g);
     }
