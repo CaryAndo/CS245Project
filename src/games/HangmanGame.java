@@ -86,10 +86,6 @@ public class HangmanGame {
         mIncorrectGuesses++;
         mPoints -= 10;
 
-        /*if (mPoints <= 0) {
-            mIsGameOver = true;
-        }*/
-
         calculateGameState();
 
         return false;

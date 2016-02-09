@@ -67,7 +67,6 @@ public class FinishScreenPanel extends JPanel {
         }
 
         //create an image object and place in label
-
         imageLabel = new JLabel("", image, JLabel.CENTER);
 
         //create a panel object and place image label
@@ -76,7 +75,6 @@ public class FinishScreenPanel extends JPanel {
 
         //add the imagelabel to the frame
         add(imageLabel);
-        //frm.setResizable(false);
 
         //create back button and place in panel
         button = new JButton("End");

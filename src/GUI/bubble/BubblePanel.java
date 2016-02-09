@@ -12,7 +12,6 @@ import java.awt.event.MouseEvent;
  */
 public class BubblePanel extends JPanel {
 
-    //Color mColor = Color.RED; // Arbitrary default color
     private Color mColor = new Color(200, 0, 0); // Arbitrary default color
     private Color mColorHighlight;
     private boolean mIsHighlighted = false;
@@ -52,9 +51,6 @@ public class BubblePanel extends JPanel {
                 super.mouseEntered(e);
                 mIsHighlighted = true;
 
-                //System.out.println("Bubble Color: " + mColor);
-                //System.out.println("Highlight Color" + mColorHighlight);
-
                 repaint();
             }
 
@@ -62,9 +58,6 @@ public class BubblePanel extends JPanel {
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
                 mIsHighlighted = false;
-
-                //System.out.println("Bubble Color: " + mColor);
-                //System.out.println("Highlight Color" + mColorHighlight);
 
                 repaint();
             }

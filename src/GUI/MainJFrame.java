@@ -115,8 +115,6 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
 
     @Override
     public void startNewHangmanGame() {
-        //System.out.println("Starting a new game!");
-
         if (mCurrentScreenPanel != null) {
             remove(mCurrentScreenPanel);
         }

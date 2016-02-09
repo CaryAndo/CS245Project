@@ -54,10 +54,7 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
 
     @Override
     public void click(Color color) {
-        //System.out.println("Attempting Color: " + color + " and current color is " + mGame.getCurrentColor());
-
         mGame.attemptColor(color);
-        //System.out.println("Current Score is: " + mGame.getPoints());
 
         if (mGame.isGameOver()) {
             mCallbacks.startFinishScreen(mGame.getGameResults());
@@ -90,7 +87,6 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
     }
 
     private void setBubbles(ArrayList<Color> colors) {
-        //System.out.println(colors);
         mJBubble1.setColor(colors.get(0));
         mJBubble2.setColor(colors.get(1));
         mJBubble3.setColor(colors.get(2));
@@ -116,8 +112,6 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
         mJBubble5 = new BubblePanel(this);
         jLabel1 = new JLabel();
 
-        //mJBubble1.setColor(new Color(0, 0, 255));
-
         GroupLayout jPanel1Layout = new GroupLayout(mJBubble1);
         mJBubble1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,8 +122,6 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
                 jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGap(0, 63, Short.MAX_VALUE)
         );
-
-        //mJBubble2.setColor(new Color(12, 80, 90));
 
         GroupLayout jPanel3Layout = new GroupLayout(mJBubble2);
         mJBubble2.setLayout(jPanel3Layout);
@@ -142,8 +134,6 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
                         .addGap(0, 63, Short.MAX_VALUE)
         );
 
-        //mJBubble3.setColor(new Color(255, 0, 0));
-
         GroupLayout jPanel4Layout = new GroupLayout(mJBubble3);
         mJBubble3.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -155,8 +145,6 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
                         .addGap(0, 63, Short.MAX_VALUE)
         );
 
-        //mJBubble4.setColor(new Color(255, 114, 0));
-
         GroupLayout jPanel5Layout = new GroupLayout(mJBubble4);
         mJBubble4.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -167,8 +155,6 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
                 jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGap(0, 63, Short.MAX_VALUE)
         );
-
-        //mJBubble5.setColor(new Color(255, 50, 200));
 
         GroupLayout jPanel6Layout = new GroupLayout(mJBubble5);
         mJBubble5.setLayout(jPanel6Layout);
@@ -182,6 +168,7 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
         );
 
         jLabel1.setText("jLabel1");
+        jLabel1.setFont(new Font("Times New Roman", Font.BOLD, 32));
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -229,7 +216,5 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
                                         .addComponent(mJBubble4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addGap(38, 38, 38)))
         );
-
-        //setBubbles(mGame.getColors());
     }
 }
