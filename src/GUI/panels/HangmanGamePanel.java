@@ -61,6 +61,7 @@ public class HangmanGamePanel extends JPanel {
      * Initialize the UI
      * */
     private void initUI() {
+
         setBackground(Color.white);
         setPreferredSize(new Dimension(600, 400));
 
@@ -94,7 +95,7 @@ public class HangmanGamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (mFinishTransitionTimer == null) {
-                    mCallbacks.startFinishScreen(mGame.getGameResults());
+                    mCallbacks.startBubbleClickGame(mGame.getGameResults());
                 }
             }
         });
@@ -156,9 +157,12 @@ public class HangmanGamePanel extends JPanel {
                     mGame.attemptLetter(c);
                     tempButton.setEnabled(false);
                     if (mGame.isGameOver() && mFinishTransitionTimer == null) {
-                        mFinishTransitionTimer = new Timer(
-                                3000,
-                                a -> mCallbacks.startFinishScreen(mGame.getGameResults())
+                        mFinishTransitionTimer = new Timer(3000, new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        mCallbacks.startBubbleClickGame(mGame.getGameResults());
+                                    }
+                                }
                         );
                         mFinishTransitionTimer.setRepeats(false);
                         mFinishTransitionTimer.start();

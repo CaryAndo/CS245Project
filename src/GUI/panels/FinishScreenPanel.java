@@ -5,6 +5,7 @@ import games.GameResults;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 /***************************************************************
  * file: FinishScreenPanel.java
@@ -29,11 +30,13 @@ public class FinishScreenPanel extends JPanel {
     private JPanel imagePanel;
     private JPanel buttonPanel;
     private JButton button;
+    private List<GameResults> mResultsList;
 
-    public FinishScreenPanel(NavigationCallbacks callbacks, GameResults results) {
+    public FinishScreenPanel(NavigationCallbacks callbacks, List<GameResults> results) {
         super();
         this.mCallbacks = callbacks;
-        this.mGameResults = results;
+        this.mGameResults = results.get(0);
+        this.mResultsList = results;
         initUI();
     }
 
@@ -46,7 +49,12 @@ public class FinishScreenPanel extends JPanel {
         setBackground(Color.BLACK);
 
         scoreLabel = new JLabel();
-        scoreLabel.setText("Score: " + mGameResults.getPoints());
+        int totalScore = 0;
+
+        for (GameResults results : mResultsList) {
+            totalScore += results.getPoints();
+        }
+        scoreLabel.setText("Score: " + totalScore);
         scoreLabel.setFont(new Font("Times New Roman", Font.BOLD, 24));
         scoreLabel.setForeground(Color.WHITE);
 
@@ -59,7 +67,6 @@ public class FinishScreenPanel extends JPanel {
         }
 
         //create an image object and place in label
-
         imageLabel = new JLabel("", image, JLabel.CENTER);
 
         //create a panel object and place image label
@@ -68,7 +75,6 @@ public class FinishScreenPanel extends JPanel {
 
         //add the imagelabel to the frame
         add(imageLabel);
-        //frm.setResizable(false);
 
         //create back button and place in panel
         button = new JButton("End");
