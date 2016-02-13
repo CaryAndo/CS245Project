@@ -18,6 +18,7 @@ import java.io.IOException;
  * purpose: A custom Panel that draws a picture, its flexible
  *
  ****************************************************************/
+
 public class ImagePanel extends JPanel {
 
     private BufferedImage image;
@@ -30,11 +31,12 @@ public class ImagePanel extends JPanel {
             ioe.printStackTrace();
         }
     }
-
+    
+    //allows the panel and image to adjust to different sizing
     public void setStretch(boolean shouldStretch) {
         mShouldStretch = shouldStretch;
     }
-
+    //draw the image 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

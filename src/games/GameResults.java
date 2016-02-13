@@ -31,31 +31,31 @@ public class GameResults {
         this.mIncorrectGuesses = incorrectGuesses;
         this.mDidFinish = didFinish;
     }
-
+    //sets the status of if the game was won or not
     public void setDidWin(boolean didWin) {
         this.mDidWin = didWin;
     }
-
+    //returns status of the game
     public boolean didWin() {
         return this.mDidWin;
     }
-
+    //sets the current points of the game
     public void setPoints(int points) {
         this.mPoints = points;
     }
-
+    //returns the points scored
     public int getPoints() {
         return this.mPoints;
     }
-
+    //sets the number of incorrect guesses
     public void setIncorrectGuesses(int guesses) {
         this.mIncorrectGuesses = guesses;
     }
-
+    //returns the number of incorrect guesses
     public int getIncorrectGuesses() {
         return this.mIncorrectGuesses;
     }
-
+    //sets the 
     public void setDidFinish(boolean didFinish) {
         this.mDidFinish = didFinish;
     }

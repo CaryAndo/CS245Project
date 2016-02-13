@@ -1,3 +1,16 @@
+/***************************************************************
+ * file: BubbleClickGame.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 02/11/2016
+ *
+ * purpose: This is where all the logic of the state of 
+ *          the bubble click game is updated and stored
+ *
+ ****************************************************************/
+
 package games;
 
 import java.awt.*;
@@ -36,11 +49,11 @@ public class BubbleClickGame {
             mCurrentBubbleClickGameRound++;
         }
     }
-
+    //returns status of game over
     public boolean isGameOver() {
         return mIsGameOver;
     }
-
+    //returns the points that the user has
     public int getPoints() {
         int points = 0;
 
@@ -61,14 +74,12 @@ public class BubbleClickGame {
         //System.out.println("Generating new list of random colors");
 
         Color[] potentialColors = {
+            
                 Color.RED,
                 Color.GREEN,
                 Color.BLUE,
                 Color.YELLOW,
-                Color.ORANGE,
-                Color.PINK,
-                Color.WHITE,
-                Color.BLACK
+                Color.MAGENTA
         };
 
         /**
@@ -76,7 +87,7 @@ public class BubbleClickGame {
          * */
         for (Color potentialColor : potentialColors) {
             if (!potentialColor.equals(getCurrentColor())) {
-                tempColorList.add(potentialColor);
+                tempColorList.add(potentialColor);   
             }
         }
 
@@ -84,7 +95,7 @@ public class BubbleClickGame {
          * Add spurious colors from the temporary list to the final list
          * */
         for (int i = 0; i < 4; i++) {
-            int tempIndex = ThreadLocalRandom.current().nextInt(0, tempColorList.size()-1);
+            int tempIndex = ThreadLocalRandom.current().nextInt(0, tempColorList.size());
             colorList.add(tempColorList.get(tempIndex));
             tempColorList.remove(tempIndex);
         }
@@ -98,18 +109,18 @@ public class BubbleClickGame {
 
         return colorList;
     }
-
+    //returns the current color
     public Color getCurrentColor() {
         return mRounds[mCurrentBubbleClickGameRound].getColor();
     }
-
+    //returns the results of the game
     public GameResults getGameResults() {
         GameResults results = new GameResults();
         results.setDidFinish(mIsGameOver);
         results.setPoints(getPoints());
         return results;
     }
-
+    //returns the name of the color
     public String getCurrentColorString() {
         return mRounds[mCurrentBubbleClickGameRound].getColorName();
     }

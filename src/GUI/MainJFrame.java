@@ -56,7 +56,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         timer.setRepeats(false);
         timer.start(); // gogogogogo
     }
-
+    //this method initializes the splash screen
     @Override
     public void startSplashScreen() {
         BorderLayout splashLayout = new BorderLayout();
@@ -71,7 +71,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(splashScreenPanel, BorderLayout.CENTER); // Add JPanel to JFrame
         pack();
     }
-
+    //this method initializes the main menu
     @Override
     public void startMainMenu() {
         //System.out.println("Starting the main menu");
@@ -86,7 +86,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(mainMenuPanel, BorderLayout.CENTER);
         pack();
     }
-
+    //this method shows the credit screen
     @Override
     public void startCreditsScreen() {
         if (mCurrentScreenPanel != null) {
@@ -99,7 +99,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(creditsPanel, BorderLayout.CENTER);
         pack();
     }
-
+    //displays the high scores screen
     @Override
     public void startHighScoreScreen() {
         if (mCurrentScreenPanel != null) {
@@ -112,7 +112,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(highScoresPanel, BorderLayout.CENTER);
         pack();
     }
-
+    //starts a new hangman game
     @Override
     public void startNewHangmanGame() {
         if (mCurrentScreenPanel != null) {
@@ -125,7 +125,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(hangmanGamePanel, BorderLayout.CENTER);
         pack();
     }
-
+    //starts the bubble click game
     @Override
     public void startBubbleClickGame(GameResults results) {
         mResultList = new ArrayList<>();
@@ -144,7 +144,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(bubbleClickGamePanel, BorderLayout.CENTER);
         pack();
     }
-
+    //displays the finish screen with results
     @Override
     public void startFinishScreen(GameResults results) {
 

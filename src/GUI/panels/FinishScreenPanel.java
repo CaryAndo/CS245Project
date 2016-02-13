@@ -39,7 +39,7 @@ public class FinishScreenPanel extends JPanel {
         this.mResultsList = results;
         initUI();
     }
-
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -32,7 +32,8 @@ public class HangmanScaffoldPanel extends JPanel {
     private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     private String currentDateString = dateFormat.format(Calendar.getInstance().getTime());
     private boolean mWinner = false;
-
+    
+    //the following methods are for drawing each component of the hangman
     public boolean isDrawingRightLeg() {
         return mDrawRightLeg;
     }
@@ -84,7 +85,7 @@ public class HangmanScaffoldPanel extends JPanel {
     public void setWinner(boolean winner) {
         mWinner = winner;
     }
-
+    
     public void addNextBodyPart() {
         if (!isDrawingHead()) {
             setDrawHead(true);
@@ -102,7 +103,7 @@ public class HangmanScaffoldPanel extends JPanel {
 
         repaint();
     }
-
+    //sets and displays the clock in real time
     public HangmanScaffoldPanel() {
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
@@ -114,7 +115,6 @@ public class HangmanScaffoldPanel extends JPanel {
 
         timer.start();
     }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -143,7 +143,7 @@ public class HangmanScaffoldPanel extends JPanel {
         int manYBottomofTorso = manYTopOfHead + MAN_HEAD_DIAMETER + MAN_BODY_HEIGHT;
 
         /**
-         * Start actually drawing
+         * The following methods start actually drawing
          * */
         g.fillRect(0, getHeight() - LINE_THICKNESS, getWidth(), LINE_THICKNESS); // Draw the bottom of the scaffold
         g.fillRect(poleXPosition, SCAFFOLD_TOP_MARGIN, LINE_THICKNESS, getHeight() - LINE_THICKNESS); // Draw the scaffold poll

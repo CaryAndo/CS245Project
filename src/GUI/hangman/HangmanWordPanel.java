@@ -49,7 +49,8 @@ public class HangmanWordPanel extends JPanel {
         }
         repaint();
     }
-
+    //defines how the letters should appear on the hangman word
+    //when selected
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
