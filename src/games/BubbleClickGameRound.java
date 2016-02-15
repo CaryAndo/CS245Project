@@ -18,9 +18,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by cary on 2/3/16.
- */
+/***************************************************************
+ * file: BubbleClickGameRound.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 02/11/2016
+ *
+ * purpose: This is where the current game round is initialized
+ *          and the colors randomly determined
+ *
+ ****************************************************************/
 public class BubbleClickGameRound {
 
     private static Map<Color, String> sColorMap = new HashMap<>();

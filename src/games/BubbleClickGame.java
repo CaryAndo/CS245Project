@@ -17,9 +17,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by cary on 2/3/16.
- */
+/***************************************************************
+ * file: BubbleClickGame.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 02/11/2016
+ *
+ * purpose: This is where all the logic of the state of
+ *          the bubble click game is updated and stored
+ *
+ ****************************************************************/
 public class BubbleClickGame {
 
     private boolean mIsGameOver = false;
