@@ -5,7 +5,7 @@ import games.GameResults;
 
 
 /***************************************************************
- * file: HangmanGamePanel.java
+ * file: NavigationCallbacks.java
  * author: Cary Anderson and Richard Jung
  * class: CS 245 – GUI Programming
  *

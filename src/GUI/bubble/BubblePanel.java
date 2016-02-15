@@ -1,3 +1,16 @@
+/***************************************************************
+ * file: BubblePanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 02/12/2016
+ *
+ * purpose: This class defines the characteristics of the 
+ *          bubble panels and bubbles in the bubble click game
+ *
+ ****************************************************************/
+
 package GUI.bubble;
 
 import callbacks.BubbleClickCallbacks;
@@ -7,9 +20,18 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-/**
- * Created by cary on 2/3/16.
- */
+/***************************************************************
+ * file: BubblePanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 02/12/2016
+ *
+ * purpose: This class defines the characteristics of the
+ *          bubble panels and bubbles in the bubble click game
+ *
+ ****************************************************************/
 public class BubblePanel extends JPanel {
 
     private Color mColor = new Color(200, 0, 0); // Arbitrary default color
@@ -25,20 +47,21 @@ public class BubblePanel extends JPanel {
         int newGreen = mColor.getGreen();
         int newBlue = mColor.getBlue();
 
-        if (!(newRed + 30 > 255)) {
-            newRed += 30;
+        if (!(newRed + 100 > 255)) {
+            newRed += 100;
         }
 
-        if (!(newGreen + 30 > 255)) {
-            newGreen += 30;
+        if (!(newGreen + 100 > 255)) {
+            newGreen += 100;
         }
 
-        if (!(newBlue + 30 > 255)) {
-            newBlue += 30;
+        if (!(newBlue + 100 > 255)) {
+            newBlue += 100;
         }
 
         mColorHighlight = new Color(newRed, newGreen, newBlue);
-
+        
+        //for mouse event detection such as clicks, hover, and exits
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -63,7 +86,8 @@ public class BubblePanel extends JPanel {
             }
         });
     }
-
+    //sets the colors of the bubble and defines
+    //the highlighting of the bubbles upon mouse hover
     public void setColor(Color color) {
         this.mColor = color;
 
@@ -71,23 +95,23 @@ public class BubblePanel extends JPanel {
         int newGreen = mColor.getGreen();
         int newBlue = mColor.getBlue();
 
-        if (!(newRed + 30 > 255)) {
-            newRed += 30;
+        if (!(newRed + 100 > 255)) {
+            newRed += 100;
         }
 
-        if (!(newGreen + 30 > 255)) {
-            newGreen += 30;
+        if (!(newGreen + 100 > 255)) {
+            newGreen += 100;
         }
 
-        if (!(newBlue + 30 > 255)) {
-            newBlue += 30;
+        if (!(newBlue + 100 > 255)) {
+            newBlue += 100;
         }
 
         mColorHighlight = new Color(newRed, newGreen, newBlue);
 
         repaint();
     }
-
+    //redraws the bubble panel with the new intensity of color
     @Override
     protected void paintComponent(Graphics g) {
         if (mIsHighlighted) {

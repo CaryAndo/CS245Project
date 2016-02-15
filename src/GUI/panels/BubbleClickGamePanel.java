@@ -1,3 +1,16 @@
+/***************************************************************
+ * file: BubbleClickGamePanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 02/11/2016
+ *
+ * purpose: This is the main component that initializes and defines 
+ *          the layout of the bubble game panel and bubbles 
+ *
+ ****************************************************************/
+
 package GUI.panels;
 
 import GUI.bubble.BubblePanel;
@@ -16,9 +29,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by cary on 2/3/16.
- */
+/***************************************************************
+ * file: BubbleClickGamePanel.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
+ *
+ * assignment: Quarter Project
+ * date last modified: 02/11/2016
+ *
+ * purpose: This is the main component that initializes and defines
+ *          the layout of the bubble game panel and bubbles
+ *
+ ****************************************************************/
 public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks {
 
     private JLabel jLabel1;
@@ -51,7 +73,7 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
         initUI();
         updateUIElements();
     }
-
+    //checks to see if there were 5 clicks or 5 rounds played
     @Override
     public void click(Color color) {
         mGame.attemptColor(color);
@@ -85,7 +107,7 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
 
         jLabel1.setText(BubbleClickGameRound.getColorName(tempColorList.get(ThreadLocalRandom.current().nextInt(0, tempColorList.size()-1))));
     }
-
+    //sets the colors of the bubbles
     private void setBubbles(ArrayList<Color> colors) {
         mJBubble1.setColor(colors.get(0));
         mJBubble2.setColor(colors.get(1));
@@ -93,7 +115,7 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
         mJBubble4.setColor(colors.get(3));
         mJBubble5.setColor(colors.get(4));
     }
-
+    //shows the clock
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -102,7 +124,7 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
 
         g2.drawString(mCurrentDateString, getWidth() - 150, 20);
     }
-
+    //layout of the panel
     private void initUI() {
 
         mJBubble1 = new BubblePanel(this);
