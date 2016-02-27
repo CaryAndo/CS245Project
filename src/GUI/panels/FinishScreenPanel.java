@@ -2,6 +2,7 @@ package GUI.panels;
 
 import callbacks.NavigationCallbacks;
 import games.GameResults;
+import games.HighScoresFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +32,8 @@ public class FinishScreenPanel extends JPanel {
     private JPanel buttonPanel;
     private JButton button;
     private List<GameResults> mResultsList;
+    
+    private String nameEntry;
 
     public FinishScreenPanel(NavigationCallbacks callbacks, List<GameResults> results) {
         super();
@@ -54,6 +57,21 @@ public class FinishScreenPanel extends JPanel {
         for (GameResults results : mResultsList) {
             totalScore += results.getPoints();
         }
+        
+        try {
+            HighScoresFile h = new HighScoresFile();
+            
+            if(h.checkScores(totalScore)) {
+                nameEntry = JOptionPane.showInputDialog("Congratulations! "
+                        + "You set a high enough score!! Please enter your name: ");
+                h.addNameEntry(nameEntry, totalScore);
+                h.writeToFile();
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        
         scoreLabel.setText("Score: " + totalScore);
         scoreLabel.setFont(new Font("Times New Roman", Font.BOLD, 24));
         scoreLabel.setForeground(Color.WHITE);

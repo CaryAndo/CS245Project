@@ -2,6 +2,8 @@ package GUI.panels;
 
 import callbacks.NavigationCallbacks;
 
+import games.HighScoresFile;
+
 import javax.swing.*;
 
 /***************************************************************
@@ -47,25 +49,32 @@ public class HighScorePanel extends JPanel {
         jButton1.addActionListener(e -> {
             mCallbacks.startMainMenu();
         });
+        
+        try {
+            HighScoresFile hsf = new HighScoresFile();
+        
+            jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 26)); // NOI18N
+            jLabel1.setForeground(new java.awt.Color(51, 51, 255));
+            jLabel1.setText("HiGh ScOrEs");
 
-        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 26)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel1.setText("HiGh ScOrEs");
+            label1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+            label1.setText(hsf.getName(0));
 
-        label1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        label1.setText("ABC.....00000");
+            label2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+            label2.setText(hsf.getName(1));
 
-        label2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        label2.setText("ABC.....00000");
+            label3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+            label3.setText(hsf.getName(2));
 
-        label3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        label3.setText("ABC.....00000");
+            label4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+            label4.setText(hsf.getName(3));
 
-        label4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        label4.setText("ABC.....00000");
-
-        label5.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        label5.setText("ABC.....00000");
+            label5.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+            label5.setText(hsf.getName(4));
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         setLayout(layout);

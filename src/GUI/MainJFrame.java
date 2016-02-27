@@ -3,6 +3,7 @@ package GUI;
 import GUI.panels.*;
 import callbacks.NavigationCallbacks;
 import games.GameResults;
+import games.HighScoresFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,7 +45,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
 
         setTitle("Project 1");
         startSplashScreen();
-
+       
         setLocationRelativeTo(null); // Center the Window
 
         Timer timer = new Timer(3000, new ActionListener() {
@@ -106,6 +107,13 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
             remove(mCurrentScreenPanel);
         }
 
+       try {
+            HighScoresFile hs = new HighScoresFile();
+       }
+       catch(Exception e) {
+            e.printStackTrace();
+       }
+        
         JPanel highScoresPanel = new HighScorePanel(this);
         mCurrentScreenPanel = highScoresPanel;
 
@@ -162,4 +170,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(finishScreenPanel, BorderLayout.CENTER);
         pack();
     }
+    
+   
+    
 }
