@@ -12,10 +12,9 @@ import javax.swing.*;
  * class: CS 245 – GUI Programming
  *
  * assignment: Quarter Project
- * date last modified: 01/29/2016
+ * date last modified: 02/23/2016
  *
  * purpose: The Screen that holds the High Scores
- * TODO: Add functionality to this (Next checkpoint)
  *
  ****************************************************************/
 public class HighScorePanel extends JPanel {
@@ -45,11 +44,13 @@ public class HighScorePanel extends JPanel {
         label5 = new java.awt.Label();
 
         jButton1.setText("Back\n");
+        jButton1.setToolTipText("Click this button to go back to the main menu");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(e -> {
             mCallbacks.startMainMenu();
         });
         
+        //sets the label texts to the high scores and names
         try {
             HighScoresFile hsf = new HighScoresFile();
         

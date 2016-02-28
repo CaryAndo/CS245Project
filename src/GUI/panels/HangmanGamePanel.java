@@ -91,6 +91,7 @@ public class HangmanGamePanel extends JPanel {
         JButton skipButton = new JButton();
         skipButton.setMinimumSize(new Dimension(20, 20));
         skipButton.setText("Skip");
+        skipButton.setToolTipText("Click this button to skip this game and go to the Color Bubble game");
         skipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -150,6 +151,7 @@ public class HangmanGamePanel extends JPanel {
         for (int i = 0; i < 26; i++) {
             char c = (char) ('A' + i);
             JButton tempButton = new JButton(Character.toString(c));
+            tempButton.setToolTipText("Press this button to select " + c);
             tempButton.setMinimumSize(new Dimension(20, 20));
             tempButton.addActionListener(new ActionListener() {
                 @Override

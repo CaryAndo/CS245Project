@@ -44,6 +44,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // Tell the app to close when we want it to
 
         setTitle("Project 1");
+        
         startSplashScreen();
        
         setLocationRelativeTo(null); // Center the Window

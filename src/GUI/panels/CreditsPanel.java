@@ -37,6 +37,7 @@ public class CreditsPanel extends JPanel {
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jButton1.setText("Back");
+        jButton1.setToolTipText("Click this button to go back to the main menu");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(e -> {
            mCallbacks.startMainMenu();

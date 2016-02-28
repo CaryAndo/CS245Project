@@ -96,6 +96,7 @@ public class FinishScreenPanel extends JPanel {
 
         //create back button and place in panel
         button = new JButton("End");
+        button.setToolTipText("Click this button to go back to the main menu");
         button.addActionListener(e -> mCallbacks.startMainMenu());
 
         //this.setLayout(new BorderLayout());

@@ -70,6 +70,9 @@ public class MainMenuPanel extends JPanel {
          * Start Button
          * */
         JButton startButton = new JButton();
+        
+        startButton.setToolTipText("Click this button to start the game");
+        
         startButton.setText("Start");
         startButton.setActionCommand("START_GAME");
         startButton.addActionListener(new ActionListener() {
@@ -85,6 +88,9 @@ public class MainMenuPanel extends JPanel {
          * "High Scores" Button
          * */
         JButton highScoresButton = new JButton();
+        
+        highScoresButton.setToolTipText("Click this button to see the top 5 scores");
+        
         highScoresButton.setText("High Scores");
         highScoresButton.addActionListener(e -> {
             mCallbacks.startHighScoreScreen();
@@ -94,7 +100,9 @@ public class MainMenuPanel extends JPanel {
          * Credits Button
          * */
         JButton creditsButton = new JButton();
-        creditsButton.setText("Credits");
+        creditsButton.setText("Credits"); 
+        creditsButton.setToolTipText("Click this button to see the credits for the creators of this program");
+        
         creditsButton.addActionListener(e -> {
             mCallbacks.startCreditsScreen();
         });

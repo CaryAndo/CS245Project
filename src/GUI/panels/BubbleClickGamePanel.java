@@ -109,11 +109,20 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
     }
     //sets the colors of the bubbles
     private void setBubbles(ArrayList<Color> colors) {
-        mJBubble1.setColor(colors.get(0));
-        mJBubble2.setColor(colors.get(1));
+        mJBubble1.setColor(colors.get(0)); 
+        mJBubble1.setToolTipText("Click this bubble to select its color");
+        
+        mJBubble2.setColor(colors.get(1)); 
+        mJBubble2.setToolTipText("Click this bubble to select its color");
+        
         mJBubble3.setColor(colors.get(2));
+        mJBubble3.setToolTipText("Click this bubble to select its color");
+        
         mJBubble4.setColor(colors.get(3));
+        mJBubble4.setToolTipText("Click this bubble to select its color");
+        
         mJBubble5.setColor(colors.get(4));
+        mJBubble5.setToolTipText("Click this bubble to select its color");
     }
     //shows the clock
     @Override
@@ -190,6 +199,8 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
         );
 
         jLabel1.setText("jLabel1");
+        jLabel1.setToolTipText("Click the bubble with the color of this word");
+        
         jLabel1.setFont(new Font("Times New Roman", Font.BOLD, 32));
 
         GroupLayout layout = new GroupLayout(this);

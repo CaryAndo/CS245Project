@@ -1,18 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package games;
 
 import java.io.*;
 import java.util.*;
 import GUI.panels.HighScorePanel;
 import games.GameResults;
-/**
+
+/***************************************************************
+ * file: HighScoresFile.java
+ * author: Cary Anderson and Richard Jung
+ * class: CS 245 – GUI Programming
  *
- * @author Richard
- */
+ * assignment: Quarter Project
+ * date last modified: 02/23/2016
+ *
+ * purpose: This file deals with the file management and logic
+ *          of the high scores entries
+ *
+ ****************************************************************/
+
 public class HighScoresFile {
     
     private ArrayList<String> names;
@@ -20,6 +25,7 @@ public class HighScoresFile {
     private int currScore;
     private int lowScore;
     
+    //constructor
     public HighScoresFile() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("highscores.txt"));
         
@@ -36,7 +42,8 @@ public class HighScoresFile {
         }
        
         reader.close();
-    };  
+    }; 
+    
     //this method compares the current total score with the array of scores
     public boolean checkScores(int s) {
         currScore = s;
@@ -98,6 +105,7 @@ public class HighScoresFile {
         writer.close();
     }
     
+    //returns the high score entry that is requested
     public String getName(int i) {
         return names.get(i);
     }

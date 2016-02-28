@@ -54,7 +54,7 @@ public class SplashScreenPanel extends JPanel {
          * */
         JLabel splashSubtextLabel = new JLabel();
         splashSubtextLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        splashSubtextLabel.setText("By team CaR");
+        splashSubtextLabel.setText("By team JCaR");
         splashSubtextLabel.setForeground(Color.white);
         splashSubtextLabel.setHorizontalAlignment(JLabel.CENTER);
         splashSubtextLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 75, 0));
