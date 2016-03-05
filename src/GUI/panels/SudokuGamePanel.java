@@ -116,11 +116,12 @@ public class SudokuGamePanel extends JPanel {
                 else {
                     sudoku.checkSubmit(cells);
                 
-                    if(sudoku.isIncorrect())
-                        JOptionPane.showMessageDialog(null, "Your submission is incorrect!\n" + 
-                                "Try again or press Quit to exit");
-                    else
-                        JOptionPane.showMessageDialog(null, "Congratulations! You got it!");
+                if(sudoku.isIncorrect())
+                    JOptionPane.showMessageDialog(null, "Your submission is incorrect!\n" + 
+                            "Try again or press Quit to exit");
+                else
+                    JOptionPane.showMessageDialog(null, "Congratulations! You got it!");
+                    mCallbacks.startFinishScreen(mGame.getGameResults());
                 }
             }});
         
@@ -281,7 +282,6 @@ public class SudokuGamePanel extends JPanel {
                 } catch(NumberFormatException err) {
                     JOptionPane.showMessageDialog(null, "You must enter an integer between 1 and 9!", 
                             "NOPE!!", JOptionPane.WARNING_MESSAGE);
-                    System.out.println("Yo");
                     source.setText("");
                 }           
             }  
