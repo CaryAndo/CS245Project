@@ -47,7 +47,6 @@ public class SudokuGame {
     
     //scans SUDOKU inputs tracks wrong inputs and modifies score accordingly
     public void checkSubmit(JTextField [][] cells) {      
-//        incorrectGuesses = 0;
         for(int i = 0; i < cells.length; i++) {
             for(int j = 0; j < cells[0].length; j++) {
                 if(flag[i][j] == true)
@@ -56,7 +55,6 @@ public class SudokuGame {
                         Integer.parseInt(cells[i][j].getText()) != SUDOKU[i][j]) {
                     flag[i][j] = true;
                     mPoints -= 10;
-//                    incorrectGuesses++;
                 } 
             }
         }   
