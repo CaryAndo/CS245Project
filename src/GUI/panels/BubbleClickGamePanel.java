@@ -29,18 +29,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.ThreadLocalRandom;
 
-/***************************************************************
- * file: BubbleClickGamePanel.java
- * author: Cary Anderson and Richard Jung
- * class: CS 245 – GUI Programming
- *
- * assignment: Quarter Project
- * date last modified: 02/11/2016
- *
- * purpose: This is the main component that initializes and defines
- *          the layout of the bubble game panel and bubbles
- *
- ****************************************************************/
 public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks {
 
     private JLabel jLabel1;
@@ -78,11 +66,16 @@ public class BubbleClickGamePanel extends JPanel implements BubbleClickCallbacks
     public void click(Color color) {
         mGame.attemptColor(color);
 
+//        if (mGame.isGameOver()) {
+//            mCallbacks.startFinishScreen(mGame.getGameResults());
+//            return;
+//        }
+
         if (mGame.isGameOver()) {
-            mCallbacks.startFinishScreen(mGame.getGameResults());
+            mCallbacks.startSudokuGame(mGame.getGameResults());
             return;
         }
-
+        
         updateUIElements();
     }
 

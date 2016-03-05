@@ -76,8 +76,7 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
     //this method initializes the main menu
     @Override
     public void startMainMenu() {
-        //System.out.println("Starting the main menu");
-
+        
         if (mCurrentScreenPanel != null) {
             remove(mCurrentScreenPanel);
         }
@@ -153,6 +152,25 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(bubbleClickGamePanel, BorderLayout.CENTER);
         pack();
     }
+    
+    public void startSudokuGame(GameResults results) {
+        mResultList = new ArrayList<>();
+
+        if (results != null) {
+            mResultList.add(results);
+        }
+
+        if (mCurrentScreenPanel != null) {
+            remove(mCurrentScreenPanel);
+        }
+
+        JPanel sudokuPanel = new SudokuGamePanel(this);
+        mCurrentScreenPanel = sudokuPanel;
+
+        add(sudokuPanel, BorderLayout.CENTER);
+        pack();
+    }
+    
     //displays the finish screen with results
     @Override
     public void startFinishScreen(GameResults results) {
@@ -170,8 +188,5 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
 
         add(finishScreenPanel, BorderLayout.CENTER);
         pack();
-    }
-    
-   
-    
+    } 
 }

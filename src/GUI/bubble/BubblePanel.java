@@ -20,18 +20,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-/***************************************************************
- * file: BubblePanel.java
- * author: Cary Anderson and Richard Jung
- * class: CS 245 – GUI Programming
- *
- * assignment: Quarter Project
- * date last modified: 02/12/2016
- *
- * purpose: This class defines the characteristics of the
- *          bubble panels and bubbles in the bubble click game
- *
- ****************************************************************/
 public class BubblePanel extends JPanel {
 
     private Color mColor = new Color(200, 0, 0); // Arbitrary default color

@@ -57,6 +57,8 @@ public class HighScoresFile {
     
     //adds the name and total score to list of scores
     public void addNameEntry(String nameEntry, int totalScore) {
+        if(nameEntry == null)
+            nameEntry = "";
         names.set(names.size() - 1, nameEntry + " : " + Integer.toString(totalScore));
         sortScores();
     } 

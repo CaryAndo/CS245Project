@@ -1,5 +1,5 @@
-Rich Jungle : 600
+Tiger : 840
+Lion : 740
+Kylo Ren : 620
 Care Bear : 600
-HangmanHung : 580
-Javabeans : 570
-DeadPool : 480
+Rich Jungle : 600

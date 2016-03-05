@@ -1,13 +1,3 @@
-package GUI.panels;
-
-import callbacks.NavigationCallbacks;
-import games.GameResults;
-import games.HighScoresFile;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.List;
-
 /***************************************************************
  * file: FinishScreenPanel.java
  * author: Cary Anderson and Richard Jung
@@ -20,6 +10,17 @@ import java.util.List;
  * a GameResults Object
  *
  ****************************************************************/
+
+package GUI.panels;
+
+import callbacks.NavigationCallbacks;
+import games.GameResults;
+import games.HighScoresFile;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
 public class FinishScreenPanel extends JPanel {
 
     private NavigationCallbacks mCallbacks;
