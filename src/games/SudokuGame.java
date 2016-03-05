@@ -19,7 +19,7 @@ import javax.swing.*;
 public class SudokuGame {
     private static boolean mIsGameOver;
     private static int mPoints = 540;
-    private static int incorrectGuesses = 0;
+    private static int incorrectGuesses;
     
     private static final int[][] SUDOKU = {{8, 3, 5, 4, 1, 6, 9, 2, 7},
                                            {2, 9, 6, 8, 5, 7, 4, 3, 1},
@@ -46,7 +46,8 @@ public class SudokuGame {
     }
     
     //scans SUDOKU inputs tracks wrong inputs and modifies score accordingly
-    public void checkSubmit(JTextField [][] cells) {
+    public void checkSubmit(JTextField [][] cells) {      
+//        incorrectGuesses = 0;
         for(int i = 0; i < cells.length; i++) {
             for(int j = 0; j < cells[0].length; j++) {
                 if(flag[i][j] == true)
@@ -55,14 +56,24 @@ public class SudokuGame {
                         Integer.parseInt(cells[i][j].getText()) != SUDOKU[i][j]) {
                     flag[i][j] = true;
                     mPoints -= 10;
-                    incorrectGuesses++;
-                }
+//                    incorrectGuesses++;
+                } 
             }
         }   
     }
     //checks if overall attempt is incorrect
-    public boolean isIncorrect() {
-        return incorrectGuesses > 0;
+    public boolean isIncorrect(JTextField[][] cells) {
+        incorrectGuesses = 0;
+        for(int i = 0; i < cells.length; i++) {
+            for(int j= 0; j < cells[0].length; j++) {
+                if(cells[i][j].getText().equals("") || 
+                    Integer.parseInt(cells[i][j].getText()) != SUDOKU[i][j]) {
+                    incorrectGuesses++;
+                }
+            }
+        }
+        
+        return incorrectGuesses > 0;    
     }
     
     //sends the SUDOKU solution

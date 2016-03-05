@@ -116,13 +116,15 @@ public class SudokuGamePanel extends JPanel {
                 else {
                     sudoku.checkSubmit(cells);
                 
-                if(sudoku.isIncorrect())
-                    JOptionPane.showMessageDialog(null, "Your submission is incorrect!\n" + 
+                    if(sudoku.isIncorrect(cells)) 
+                        JOptionPane.showMessageDialog(null, "Your submission is incorrect!\n" + 
                             "Try again or press Quit to exit");
-                else
-                    JOptionPane.showMessageDialog(null, "Congratulations! You got it!");
-                    mCallbacks.startFinishScreen(mGame.getGameResults());
+                    else {
+                        JOptionPane.showMessageDialog(null, "Congratulations! You got it!");
+                        mCallbacks.startFinishScreen(mGame.getGameResults());
+                    }
                 }
+     
             }});
         
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
