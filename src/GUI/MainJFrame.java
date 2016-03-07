@@ -87,8 +87,8 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(mainMenuPanel, BorderLayout.CENTER);
         pack();
         
-        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F1"), "doStuffYeah");
-        getRootPane().getActionMap().put("doStuffYeah", new AbstractAction() {
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F1"), "doStuffYeah1");
+        getRootPane().getActionMap().put("doStuffYeah1", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayNamesOfTheAwesomeDevelopers();
