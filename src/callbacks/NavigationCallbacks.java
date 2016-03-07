@@ -33,4 +33,6 @@ public interface NavigationCallbacks {
     void startSudokuGame(@Nullable GameResults results);
 
     void startFinishScreen(@Nullable GameResults results);
+    
+    void displayNamesOfTheAwesomeDevelopers();
 }

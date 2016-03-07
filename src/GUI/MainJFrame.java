@@ -80,12 +80,28 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         if (mCurrentScreenPanel != null) {
             remove(mCurrentScreenPanel);
         }
-
+        
         JPanel mainMenuPanel = new MainMenuPanel(this);
         mCurrentScreenPanel = mainMenuPanel;
-
+        
         add(mainMenuPanel, BorderLayout.CENTER);
         pack();
+        
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F1"), "doStuffYeah");
+        getRootPane().getActionMap().put("doStuffYeah", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayNamesOfTheAwesomeDevelopers();
+            }
+        });
+        
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"), "doStuffYeah");
+        getRootPane().getActionMap().put("doStuffYeah", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
     //this method shows the credit screen
     @Override
@@ -189,4 +205,9 @@ public class MainJFrame extends JFrame implements NavigationCallbacks {
         add(finishScreenPanel, BorderLayout.CENTER);
         pack();
     } 
+    
+    @Override
+    public void displayNamesOfTheAwesomeDevelopers() {
+        startCreditsScreen();
+    }
 }

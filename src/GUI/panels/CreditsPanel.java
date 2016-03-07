@@ -32,6 +32,8 @@ public class CreditsPanel extends JPanel {
     private void initUI() {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        JLabel netbeansIsTheWorstIDEinTheEntireWorldWhyWouldYouMakeMeUseThis = new javax.swing.JLabel();
+                
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
 
@@ -51,6 +53,7 @@ public class CreditsPanel extends JPanel {
 
         label2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         label2.setText("Cary Anderson, 009847253");
+        netbeansIsTheWorstIDEinTheEntireWorldWhyWouldYouMakeMeUseThis.setText("Quarter Project, Winter 2016");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         setLayout(layout);
@@ -60,7 +63,9 @@ public class CreditsPanel extends JPanel {
                                 .addGap(0, 118, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(netbeansIsTheWorstIDEinTheEntireWorldWhyWouldYouMakeMeUseThis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                )
                                 .addGap(104, 104, 104))
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
@@ -82,6 +87,8 @@ public class CreditsPanel extends JPanel {
                                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                                .addComponent(netbeansIsTheWorstIDEinTheEntireWorldWhyWouldYouMakeMeUseThis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                                 .addComponent(jButton1)
                                 .addContainerGap())
